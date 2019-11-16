@@ -2,11 +2,13 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './components/HomeScreen'
+import Explore from './components/Explore'
+
 import {
   StyleSheet,
   Button,
   View,
-  SafeAreaView,
+  SafeAreaView, 
   Text,
   Alert,
 } from 'react-native';
@@ -14,7 +16,7 @@ import {
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
-  },
+  }, 
 });
 
 const AppContainer = createAppContainer(AppNavigator);
