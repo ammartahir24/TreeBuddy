@@ -1,16 +1,7 @@
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Dimensions, View,  Container, Text, Image } from "react-native";
 import { TabNavigator } from "react-navigation";
-import MapView, { Callout } from 'react-native-maps'
-
-class CustomCalloutView extends React.Component {
-
-    render() {
-        return (
-          this.props.navigation.navigate('HomeScreen')
-        )
-    }
-}
+import MapView from 'react-native-maps'
 
 
 export default class Explore extends React.Component {
@@ -39,7 +30,7 @@ export default class Explore extends React.Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
        (position) => {
-         console.log(position);
+         // console.log(position);
          this.setState({
            latitude: position.coords.latitude,
            longitude: position.coords.longitude,
@@ -59,12 +50,12 @@ export default class Explore extends React.Component {
 
    }
 
-  getMarkers = (treesToShow) => {
+  getMarkers = (treesToShow) => { //get all markers needed from the DB.
       console.log(treesToShow)
   }
 
-  onMarkerPress = (e, loc) => {
-    console.log(e, loc)
+  onMarkerPress = (e, loc) => { //redirect to the plant's details page
+    this.props.navigation.navigate('PlantDetails', {location: loc})
   }
 
   render() {
@@ -82,7 +73,7 @@ export default class Explore extends React.Component {
         loadingEnabled = {true}
       >
         {this.state.markers.map((marker,i) => (
-          <MapView.Marker coordinate={marker.location} title={(marker.T_ID.toString())} key = {i} onPress = {(e) => {this.onMarkerPress(e,marker.location)}}>
+          <MapView.Marker coordinate={marker.location} key = {i} onPress = {(e) => {this.onMarkerPress(e,marker.location)}}>
             <Image source={require('../tree_marker.png')} style={{width:20, height:17}} />
             
           </MapView.Marker>
@@ -94,7 +85,6 @@ export default class Explore extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  
   map: {
     position: 'absolute',
     top: 0,

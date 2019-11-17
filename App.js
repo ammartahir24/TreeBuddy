@@ -7,6 +7,7 @@ import SignUp from './components/SignUp'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
+import PlantDetails from './components/PlantDetails'
 import {createDrawerNavigator} from "react-navigation-drawer";
 
 import {
@@ -20,13 +21,17 @@ import {
 
 const AppNavigator = createStackNavigator({
   LogIn: {
-    screen: LogIn,
+    // screen: LogIn,
+    screen: PlantDetails,
   },
   Home: {
     screen: HomeScreen,
   },
   Explore : {
     screen: Explore,
+  },
+  PlantDetails : {
+    screen : PlantDetails,
   },
   Profile : {
     screen: Profile,
@@ -40,7 +45,7 @@ const AppContainer = createAppContainer(AppNavigator);
 
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
-    screen: AppContainer,
+    screen: AppNavigator,
   },
   Explore : {
     screen: Explore,
