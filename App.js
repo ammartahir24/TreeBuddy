@@ -2,7 +2,10 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './components/HomeScreen'
-import Explore from './components/Explore'
+// import Explore from './components/Explore'
+import LogIn from './components/LogIn'
+import SignUp from './components/SignUp'
+
 import {createDrawerNavigator} from "react-navigation-drawer";
 
 import {
@@ -15,30 +18,33 @@ import {
 } from 'react-native';
 
 const AppNavigator = createStackNavigator({
+  
   Home: {
-    screen: HomeScreen,
+    screen: SignUp,
   },
-  Explore : {
-    screen: Explore,
-  },
+  // Explore : {
+  //   screen: Explore,
+  // },
 });
 
 const AppContainer = createAppContainer(AppNavigator);
 
 
-const MyDrawerNavigator = createDrawerNavigator({
-  Home: {
-    screen: AppContainer,
-  },
-  Explore : {
-    screen: Explore,
-  },
-});
+// const MyDrawerNavigator = createDrawerNavigator({
+//   Home: {
+//     screen: AppContainer,
+//   },
+//   Explore : {
+//     screen: Explore,
+//   },
+// });
 
-const MyApp = createAppContainer(MyDrawerNavigator);
+// const MyApp = createAppContainer(MyDrawerNavigator);
 
 export default class App extends React.Component {
   render() {
-    return <MyApp />;
+    // return <MyApp />;
+    return <AppContainer />;
+
   }
 }
