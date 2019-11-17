@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button,  View, SafeAreaView, Text, Alert, Image,TouchableWithoutFeedback} from 'react-native';
+import { StyleSheet, Button,  View, SafeAreaView, Text, Alert, Image,TouchableWithoutFeedback, TouchableHighlight, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TabNavigator } from "react-navigation";
 
@@ -12,11 +12,13 @@ export default class PlantDetails extends React.Component {
     this.state = {
       latitude: null,
       longitude: null,
-      planter: null,
+      name: "Treevor",
+      planter: "Mubeen",
       SP_ID: null,
-      SP_name: null,
-      planted: null,
-      watered: null,
+      SP_name: "Rosewood",
+      SP_Bioname: "Dalbergia Stevensonii ",
+      planted: "15/11/2014",
+      watered: "17/11/2019",
       images: [],
     };
 
@@ -52,15 +54,71 @@ export default class PlantDetails extends React.Component {
     });
 
 
-
     render() {
       const {navigate} = this.props;
       return (
         <View>
-          <View style={{backgroundColor: "#017745", height: '40%'}}>
-            <Text> &nbsp; Rosewood </Text>
+          <View style={{backgroundColor: "#017745", height: '25%'}}>
+            <Text style = {{fontSize: 30, color: "#FFFFFF", marginTop: '1%'}}>&nbsp;{this.state.SP_name} </Text>
+            <Text style = {{fontSize: 20, color: "gold", marginTop: '1%', marginLeft: '1%'}}>&nbsp;{this.state.SP_Bioname}</Text>
           </View> 
+
+          <View style={{height: "5%"}}/>
+
+          <View style= {{marginLeft: "3%", marginRight: "3%", flexDirection: 'row', justifyContent: 'space-between'}}> 
+            <Text style={{fontSize: 20, marginTop: 10}} >Nickname</Text>
+            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20, borderBottomWidth: 1, borderBottomColor: "#017745"}} placeholder = {this.state.name} editable = {false}/> 
+          </View>
+
+          <View style={{height: "7%"}}/>
+
+          <View style= {{marginLeft: "3%", marginRight: "3%", flexDirection: 'row', justifyContent: 'space-between'}}> 
+            <Text style={{fontSize: 20, marginTop: 10}} >Planted By</Text>
+            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20, borderBottomWidth: 1, borderBottomColor: "#017745"}} placeholder = {this.state.planter} editable = {false}/> 
+          </View>         
+
+          <View style={{height: "7%"}}/>
+
+          <View style= {{marginLeft: "3%", marginRight: "3%", flexDirection: 'row', justifyContent: 'space-between'}}> 
+            <Text style={{fontSize: 20, marginTop: 10}} >Planted On</Text>
+            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20, borderBottomWidth: 1, borderBottomColor: "#017745"}} placeholder = {this.state.planted} editable = {false}/> 
+          </View>         
+
+          <View style={{height: "7%"}}/>
+
+          <View style= {{marginLeft: "3%", marginRight: "3%", flexDirection: 'row', justifyContent: 'space-between'}}> 
+            <Text style={{fontSize: 20, marginTop: 10}} >Last Watered</Text>
+            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20, borderBottomWidth: 1, borderBottomColor: "#017745"}} placeholder = {this.state.watered} editable = {false}/> 
+          </View>
+
+          <View style={styles.inputsContainer}>
+            <TouchableHighlight style={styles.fullWidthButton} >
+                <Text style={styles.fullWidthButtonText}>View Species</Text>
+            </TouchableHighlight>
+          </View>
         </View>
       );
     }
   }
+
+const styles = StyleSheet.create({
+  inputsContainer: {
+    flex: 1
+  },
+  fullWidthButton: {
+    marginTop: "10%",
+    marginRight: "5%",
+    marginLeft: "5%",
+    backgroundColor: '#017745',
+    height: "140%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 30,
+  },
+  fullWidthButtonText: {
+    textAlignVertical: "center",
+    paddingBottom: "10%",
+    fontSize:24,
+    color: 'gold'
+  }
+})
