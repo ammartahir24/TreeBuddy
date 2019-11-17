@@ -10,7 +10,7 @@ import {
 
 export default class Profile extends React.Component {
     static navigationOptions = {
-      title: 'Welcome',
+      title: 'Profile',
     };
     render() {
       const {navigate} = this.props.navigation;
