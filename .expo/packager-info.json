@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 8744,
+  "expoServerNgrokUrl": "https://s5-ny6.anonymous.treebuddy.exp.direct",
+  "packagerNgrokUrl": "https://packager.s5-ny6.anonymous.treebuddy.exp.direct",
+  "ngrokPid": 16428,
   "webpackServerPort": null
 }
