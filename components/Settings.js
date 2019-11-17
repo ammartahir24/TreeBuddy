@@ -10,7 +10,7 @@ import {
 
 export default class Settings extends React.Component {
     static navigationOptions = {
-      title: 'Welcome',
+      title: 'Settings',
     };
     render() {
       const {navigate} = this.props.navigation;

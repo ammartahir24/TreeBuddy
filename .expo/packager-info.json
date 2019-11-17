@@ -2,9 +2,16 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< HEAD
   "packagerPid": 32578,
   "expoServerNgrokUrl": "https://6v-i2x.anonymous.treebuddy.exp.direct",
   "packagerNgrokUrl": "https://packager.6v-i2x.anonymous.treebuddy.exp.direct",
   "ngrokPid": 32602,
+=======
+  "packagerPid": 22344,
+  "expoServerNgrokUrl": "https://7h-599.anonymous.treebuddy.exp.direct",
+  "packagerNgrokUrl": "https://packager.7h-599.anonymous.treebuddy.exp.direct",
+  "ngrokPid": 19820,
+>>>>>>> b05faeb03979392e0aac346f86a81d46d4238c49
   "webpackServerPort": null
 }
