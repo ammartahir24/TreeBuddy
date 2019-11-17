@@ -12,7 +12,6 @@ export default class Explore extends React.Component {
       latitude: 31.5204,
       longitude: 74.3587,
       error:null,
-
       markers:[
                 {T_ID: 1, location: {latitude: 31.471728, longitude: 74.410013}},
                 {T_ID: 2, location: {latitude: 31.471817, longitude: 74.410567}},
@@ -48,13 +47,13 @@ export default class Explore extends React.Component {
       this.getMarkers(this.props.toShow);
     }
 
-   }
+  }
 
-  getMarkers = (treesToShow) => { //get all markers needed from the DB.
+  getMarkers = (treesToShow) => { //get all markers needed from the DB and update state. 
       console.log(treesToShow)
   }
 
-  onMarkerPress = (e, loc) => { //redirect to the plant's details page
+  onMarkerPress = (e, loc) => { 
     this.props.navigation.navigate('PlantDetails', {location: loc})
   }
 

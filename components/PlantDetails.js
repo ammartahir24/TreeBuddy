@@ -45,7 +45,7 @@ export default class PlantDetails extends React.Component {
       />
       ),
       headerLeft: (
-        <TouchableWithoutFeedback {/* onPress={() => this.props.navigation.goBack()} */} >
+        <TouchableWithoutFeedback>
           <Icon name="md-arrow-round-back"  style={{ marginTop: -150, marginLeft: 10}} size={32} color="#FFFFFF" />
         </TouchableWithoutFeedback>
       ),
@@ -56,7 +56,11 @@ export default class PlantDetails extends React.Component {
     render() {
       const {navigate} = this.props;
       return (
-        null
+        <View>
+          <View style={{backgroundColor: "#017745", height: '40%'}}>
+            <Text> &nbsp; Rosewood </Text>
+          </View> 
+        </View>
       );
     }
   }
