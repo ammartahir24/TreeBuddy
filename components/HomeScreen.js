@@ -13,10 +13,9 @@ import {
 import {NavigationActions} from 'react-navigation';
 
 export default class HomeScreen extends React.Component {
-    static navigationOptions = (navigation) => ({
+    static navigationOptions = ({navigation}) => ({
       title: 'Welcome',
-      headerLeft: <TouchableOpacity onPress={() => this.props.navigation.navigate('DrawerOpen')}> 
-                      {/* <MenuButton navigate={navigation.navigate} /> */}
+      headerLeft: <TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
                       <Image source={require('../hamburger.png')} style={{width:20, height:17, marginLeft: 20}} />
                   </TouchableOpacity>,
     });

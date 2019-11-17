@@ -3,6 +3,8 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './components/HomeScreen'
 import Explore from './components/Explore'
+import Profile from './components/Profile'
+import Settings from './components/Settings'
 import {createDrawerNavigator} from "react-navigation-drawer";
 
 import {
@@ -21,6 +23,12 @@ const AppNavigator = createStackNavigator({
   Explore : {
     screen: Explore,
   },
+  Profile : {
+    screen: Profile,
+  },
+  Settings : {
+    screen : Settings,
+  },
 });
 
 const AppContainer = createAppContainer(AppNavigator);
@@ -32,6 +40,12 @@ const MyDrawerNavigator = createDrawerNavigator({
   },
   Explore : {
     screen: Explore,
+  },
+  Profile : {
+    screen: Profile,
+  },
+  Settings : {
+    screen : Settings,
   },
 });
 
