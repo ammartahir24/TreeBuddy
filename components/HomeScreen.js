@@ -8,16 +8,18 @@ import {
   Alert,
   TouchableOpacity,
   Image,
+  MenuButton,
 } from 'react-native';
+import {NavigationActions} from 'react-navigation';
 
 export default class HomeScreen extends React.Component {
-    static navigationOptions = {
+    static navigationOptions = (navigation) => ({
       title: 'Welcome',
-      headerLeft: <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}> 
-
-      <Image source={require('../hamburger.png')} style={{width:20, height:17, marginLeft: 20}} />
-  </TouchableOpacity>,
-    };
+      headerLeft: <TouchableOpacity onPress={() => this.props.navigation.navigate('DrawerOpen')}> 
+                      {/* <MenuButton navigate={navigation.navigate} /> */}
+                      <Image source={require('../hamburger.png')} style={{width:20, height:17, marginLeft: 20}} />
+                  </TouchableOpacity>,
+    });
     render() {
       const {navigate} = this.props.navigation;
       return (
