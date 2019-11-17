@@ -1,5 +1,5 @@
 import React from 'react';
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './components/HomeScreen'
 import LogIn from './components/LogIn'
@@ -19,11 +19,16 @@ import {
   Alert,
 } from 'react-native';
 
-const AppNavigator = createStackNavigator({
-  LogIn: {
-    // screen: LogIn,
-    screen: PlantDetails,
+const AuthenticationStack = createStackNavigator({
+  LogIn : {
+    screen: LogIn,
   },
+  SignUp : {
+    screen : SignUp,
+  },
+})
+
+const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
   },
@@ -41,7 +46,7 @@ const AppNavigator = createStackNavigator({
   },
 });
 
-const AppContainer = createAppContainer(AppNavigator);
+// const AppContainer = createAppContainer(AppNavigator);
 
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
@@ -58,7 +63,14 @@ const MyDrawerNavigator = createDrawerNavigator({
   },
 });
 
-const MyApp = createAppContainer(MyDrawerNavigator);
+
+const switchnav = createSwitchNavigator({
+  Auth : AuthenticationStack,
+  App: MyDrawerNavigator,
+})
+
+// const MyApp = createAppContainer(MyDrawerNavigator);
+const MyApp = createAppContainer(switchnav);
 
 export default class App extends React.Component {
   render() {
