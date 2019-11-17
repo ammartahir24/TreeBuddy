@@ -5,6 +5,7 @@ import HomeScreen from './components/HomeScreen'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
+import LogIn from './components/LogIn'
 import {createDrawerNavigator} from "react-navigation-drawer";
 
 import {
@@ -17,6 +18,9 @@ import {
 } from 'react-native';
 
 const AppNavigator = createStackNavigator({
+  LogIn: {
+    screen: LogIn,
+  },
   Home: {
     screen: HomeScreen,
   },
