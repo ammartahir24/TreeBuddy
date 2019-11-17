@@ -61,7 +61,7 @@ export default class LogIn extends React.Component
               <Input secureTextEntry />
             </Item>
 
-            <Button block style={{ margin: 15, marginTop: 50}}>
+            <Button block style={{ margin: 15, marginTop: 50}} onPress={()=>{this.props.navigation.navigate("App")}}>
               <Text>Sign In</Text>
             </Button>
           

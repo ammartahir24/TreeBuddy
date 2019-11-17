@@ -33,7 +33,7 @@ export default class PlantDetails extends React.Component {
 
   }
 
-    static navigationOptions = {
+    static navigationOptions = ({navigation}) => ({
       // title: this.state.latitude.toString() + " " + this.state.longitude.to_String(),
       headerStyle: {
         height: 200
@@ -45,11 +45,11 @@ export default class PlantDetails extends React.Component {
       />
       ),
       headerLeft: (
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => navigation.goBack()} >
           <Icon name="md-arrow-round-back"  style={{ marginTop: -150, marginLeft: 10}} size={32} color="#FFFFFF" />
         </TouchableWithoutFeedback>
       ),
-    };
+    });
 
 
 
