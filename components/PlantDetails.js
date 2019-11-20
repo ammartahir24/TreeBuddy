@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button,  View, SafeAreaView, Text, Alert, Image,TouchableWithoutFeedback, TouchableHighlight, TextInput} from 'react-native';
+import { StyleSheet, Button,  View, SafeAreaView, Text, Alert, Image, ImageBackground,TouchableWithoutFeedback, TouchableHighlight, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TabNavigator } from "react-navigation";
 
@@ -64,33 +64,47 @@ export default class PlantDetails extends React.Component {
     const {navigate} = this.props;
     return (
       <View style = {{backgroundColor: '#e7f0eb',height: '100%', width: '100%'}}>
-        <View style={{backgroundColor: "#017745", height: '20%'}}>
-          <Text style = {{fontSize: 30, color: "#FFFFFF", marginTop: '1%'}}>&nbsp;{this.state.SP_name} </Text>
-          <Text style = {{fontSize: 20, color: "gold", marginTop: '1%', marginLeft: '1%'}}>&nbsp;{this.state.SP_Bioname}</Text>
+        <View style={{backgroundColor: "#00695c", height: '20%'}}>
+          <Text style = {{fontSize: 30, color: "#b9f6ca", marginTop: '1%', marginLeft: 10}}>{this.state.SP_name} </Text>
+          <Text style = {{fontSize: 20, color: "white", marginTop: '1%', marginLeft: 10}}>{this.state.SP_Bioname}</Text>
         </View> 
         <View style={{height:'80%', width:'100%',}}>
           
-          <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
-            <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30}}>Nickname</Text>
-            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center'}} value = {this.state.name} editable = {false}/> 
-          </View>
+          <ImageBackground
+            style={{ opacity: 0.8, height: "100%", width:"100%"}}
+            source = {require('../backdrop1jpg.jpg')}
+          >
 
-          <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
-            <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30}}>Planted By</Text>
-            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center'}} value = {this.state.planter} editable = {false}/> 
-          </View>
+            <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Nickname</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center', color:'white'}} value = {this.state.name} editable = {false}/> 
+            </View>
 
-          <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
-            <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30}}>Planted On</Text>
-            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center'}} value = {this.state.planted} editable = {false}/> 
-          </View>
+            <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Planted By</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.planter} editable = {false}/> 
+            </View>
 
-          <View style= {{height:'20%',width:'100%', flexDirection: 'row', justifyContent: 'space-around'}}> 
-            <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30}}>Last Watered</Text>
-            <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center'}} value = {this.state.watered} editable = {false}/> 
-          </View>
+            <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Planted On</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.planted} editable = {false}/> 
+            </View>
 
-          
+            <View style= {{height:'20%',width:'100%', flexDirection: 'row', justifyContent: 'space-around'}}> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Last Watered</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.watered} editable = {false}/> 
+            </View>
+
+            <View style = {{height: '20%', width: '100%', marginLeft: 10}}>
+              <TouchableHighlight underlayColor="#87c197" onPress ={(e) =>{this.viewSpecie(e)}} style = {{backgroundColor: '#b9f6ca', width: '55%',height: '70%', alignSelf: 'center', borderRadius: 30}}>
+                <View style = {{width: '100%', flexDirection: 'row', alignSelf: 'center', marginLeft: '20%', paddingTop:10}}>
+                  <Icon name="md-eye" style = {{alignSelf: 'center'}} color = "white" size = {30}/>
+                  <Text style={styles.fullWidthButtonText}>&nbsp;&nbsp;View Species</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+
+          </ImageBackground>
 
 
         </View>
@@ -101,22 +115,9 @@ export default class PlantDetails extends React.Component {
   }
 }
 const styles = StyleSheet.create({
-  inputsContainer: {
-    alignItems: "center",
-    flex: 1,
-  },
-  fullWidthButton: {
-    width: "55%",
-    backgroundColor: '#017745',
-    height: "140%",
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 30,
-  },
   fullWidthButtonText: {
-    textAlignVertical: "center",
-    paddingBottom: "15%",
+    alignSelf: 'center',
     fontSize:20,
-    color: 'gold',
+    color: 'white',
   }
 })
