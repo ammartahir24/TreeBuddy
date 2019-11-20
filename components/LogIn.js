@@ -25,6 +25,11 @@ import {
     // Text,
     // Font
 } from "native-base";
+import {signin} from "../firebase_integeration/databasefunctions"
+
+const check = async() => {
+  signin("20100108@lums.edu.pk","hamza1234")
+}
 
 interface State {
   email: string;
@@ -62,6 +67,7 @@ export default class LogIn extends React.Component
             </Item>
 
             <Button block style={{ margin: 15, marginTop: 50}} onPress={()=>{this.props.navigation.navigate("App")}}>
+            {/* <Button block style={{ margin: 15, marginTop: 50}} onPress={()=>{check()}}> */}
               <Text>Sign In</Text>
             </Button>
           
