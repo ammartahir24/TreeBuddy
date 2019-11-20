@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "352354846644",
+    "firebase_url": "https://treebuddy123.firebaseio.com",
+    "project_id": "treebuddy123",
+    "storage_bucket": "treebuddy123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352354846644:android:03759f32b712c7463554e1",
+        "android_client_info": {
+          "package_name": "com.treebuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352354846644-pmdc3lfqo16p9ljfkg5fpn2rv72560ua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk6XI9i6cdx52kwKtWajSW_C7LUU5KPic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352354846644-pmdc3lfqo16p9ljfkg5fpn2rv72560ua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
