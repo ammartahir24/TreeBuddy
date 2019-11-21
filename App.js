@@ -8,6 +8,7 @@ import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
 import PlantDetails from './components/PlantDetails'
+import RegisterPlant from "./components/RegisterPlant"
 import {createDrawerNavigator} from "react-navigation-drawer";
 
 import {
@@ -17,6 +18,8 @@ import {
   SafeAreaView, 
   Text,
   Alert,
+  TouchableWithoutFeedback,
+  TouchableHighlight,
 } from 'react-native';
 
 const AuthenticationStack = createStackNavigator({
@@ -44,6 +47,9 @@ const AppNavigator = createStackNavigator({
   Settings : {
     screen : Settings,
   },
+  RegisterPlant : {
+    screen : RegisterPlant,
+  }
 });
 
 // const AppContainer = createAppContainer(AppNavigator);
