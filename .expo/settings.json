@@ -1,8 +1,8 @@
 {
-  "urlRandomness": "72-fre",
   "hostType": "lan",
   "lanType": "ip",
-  "dev": false,
-  "minify": true,
+  "dev": true,
+  "minify": false,
+  "urlRandomness": "wf-vtd",
   "https": false
 }
