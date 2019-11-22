@@ -10,15 +10,13 @@ export default class PlantDetails extends React.Component {
     super(props);
 
     this.state = {
-      latitude: null,
-      longitude: null,
-      name: "Treevor",
-      planter: "Mubeen",
       SP_ID: null,
       SP_name: "Rosewood",
       SP_Bioname: "Dalbergia Stevensonii ",
-      planted: "15/11/2014",
-      watered: "17/11/2019",
+      Occurences: '2',
+      Kingdom: 'Plantae',
+      Family: 'Fabacaea',
+      Order: 'Fabales',
       images: [],
     };
 
@@ -76,30 +74,30 @@ export default class PlantDetails extends React.Component {
           >
 
             <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
-              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Nickname</Text>
-              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center', color:'white'}} value = {this.state.name} editable = {false}/> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Instances</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center', color:'white'}} value = {this.state.Occurences} editable = {false}/> 
             </View>
 
             <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
-              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Planted By</Text>
-              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.planter} editable = {false}/> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Kingdom</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.Kingdom} editable = {false}/> 
             </View>
 
             <View style= {{height:'20%',width:'100%',flexDirection: 'row', justifyContent: 'space-around'}}> 
-              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Planted On</Text>
-              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.planted} editable = {false}/> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Family</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.Family} editable = {false}/> 
             </View>
 
             <View style= {{height:'20%',width:'100%', flexDirection: 'row', justifyContent: 'space-around'}}> 
-              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Last Watered</Text>
-              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.watered} editable = {false}/> 
+              <Text style={{fontSize:20, alignSelf: 'center', width:'50%',marginLeft:30,color: "white"}}>Order</Text>
+              <TextInput style={{textAlign: "center", width: "50%", fontSize: 20,alignSelf:'center',color: "white"}} value = {this.state.Order} editable = {false}/> 
             </View>
 
             <View style = {{height: '20%', width: '100%', marginLeft: 10}}>
-              <TouchableHighlight underlayColor="#87c197" onPress ={(e) =>{this.viewSpecie(e)}} style = {{backgroundColor: '#b9f6ca', width: '55%',height: '70%', alignSelf: 'center', borderRadius: 30}}>
-                <View style = {{width: '100%', flexDirection: 'row', alignSelf: 'center', marginLeft: '20%', paddingTop:10}}>
+              <TouchableHighlight  style = {{backgroundColor: '#b9f6ca', width: '55%',height: '70%', alignSelf: 'center', borderRadius: 30}}>
+                <View onPress = {(e)=> {this.viewSpecie(e)}} style = {{width: '100%', flexDirection: 'row', alignSelf: 'center', marginLeft: '20%', paddingTop:10}}>
                   <Icon name="md-eye" style = {{alignSelf: 'center'}} color = "white" size = {30}/>
-                  <Text style={styles.fullWidthButtonText}>&nbsp;&nbsp;View Species</Text>
+                  <Text style={styles.fullWidthButtonText}>Locate Specie</Text>
                 </View>
               </TouchableHighlight>
             </View>

@@ -7,8 +7,10 @@ import SignUp from './components/SignUp'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
+// import AddTree from './components/AddTree'
 import PlantDetails from './components/PlantDetails'
 import RegisterPlant from "./components/RegisterPlant"
+import SpecieDetails from './components/SpecieDetails'
 import {createDrawerNavigator} from "react-navigation-drawer";
 
 import {
@@ -24,7 +26,7 @@ import {
 
 const AuthenticationStack = createStackNavigator({
   LogIn : {
-    screen: LogIn,
+    screen: RegisterPlant,
   },
   SignUp : {
     screen : SignUp,
@@ -41,6 +43,12 @@ const AppNavigator = createStackNavigator({
   PlantDetails : {
     screen : PlantDetails,
   },
+  SpecieDetails : {
+    screen: SpecieDetails,
+  },
+  // AddTree : {
+  //   screen : AddTree,
+  // },
   Profile : {
     screen: Profile,
   },
