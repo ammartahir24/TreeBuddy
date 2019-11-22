@@ -3,7 +3,11 @@ package com.treebuddy;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+<<<<<<< HEAD
 import com.henninghall.date_picker.DatePickerPackage;
+=======
+import com.imagepicker.ImagePickerPackage;
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -43,7 +47,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+<<<<<<< HEAD
             new DatePickerPackage(),
+=======
+          new ImagePickerPackage(),
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
           new ReanimatedPackage(),
           new RNGestureHandlerPackage(),
           new RNScreensPackage(),
@@ -75,5 +83,15 @@ public class MainApplication extends Application implements ReactApplication {
               new MapsPackage()
       );
   }
+
+  @Override
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+            new MainReactPackage(),
+            new ImagePickerPackage(), // <-- add this line
+            // OR if you want to customize dialog style
+            new ImagePickerPackage(R.style.my_dialog_style)
+        );
+    }
 
 }

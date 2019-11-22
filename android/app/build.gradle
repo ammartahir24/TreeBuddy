@@ -139,7 +139,11 @@ android {
 }
 
 dependencies {
+<<<<<<< HEAD
     implementation project(':react-native-date-picker')
+=======
+    implementation project(':react-native-image-picker')
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
     implementation project(':react-native-screens')
     implementation project(':react-native-reanimated')
     implementation project(':react-native-gesture-handler')
