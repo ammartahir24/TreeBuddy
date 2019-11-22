@@ -5,7 +5,7 @@ import {
     Button,
     TouchableWithoutFeedback,
     TouchableHighlight, 
-    TextInput,
+    // TextInput,
     Text,
     TouchableOpacity,
     Alert,
@@ -14,6 +14,7 @@ import {
   
 } from 'react-native';
 
+import { TextInput } from 'react-native-paper';
 import t from 'tcomb-form-native';
 import {signin} from "../firebase_integeration/databasefunctions"
 
@@ -65,21 +66,29 @@ const options = {
   fields: {
     email: {
       lable: 'Email',
-      error: 'Its only fair if we know each other'
+      error: 'Email missing'
     },
     password: {
-      error: 'Sorry, wont let you go without the password :)'
+      error: 'Password missing'
     },
   },
 };
 
 export default class LogIn extends Component {
 
+  state = {
+    email_text: '',
+    password_text: ''
+  };
+
  handleSubmit = async () => {
     const value = this._form.getValue(); // use that ref to get the form value
     // console.log('username: ', value.username);
     // console.log('password: ', value.password);
-    let ans = await check(value.email, value.password)
+    console.log(this.state.email_text);
+    console.log(this.state.password_text);
+
+    let ans = await check(this.state.email_text, this.state.password_text)
     if(ans == 'true')
     {
       this.props.navigation.navigate("App");
@@ -88,8 +97,10 @@ export default class LogIn extends Component {
     {
       Keyboard.dismiss();
 
-        this.state.email = '';
-        this.state.password =  '';
+        // this.state.email = '';
+        this.state.email_text = '';
+
+        this.state.password_text =  '';
     }
 
 
@@ -105,24 +116,41 @@ export default class LogIn extends Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
+
       <View style={styles.container}>
-        <Form 
-          ref={c => this._form = c} // assign a ref
-          type={User}
-          options={options} 
-        />
+      <View style={{paddingBottom: 10}}>
+        <TextInput style = {{color: 'red'}}
+        label='Email'
+        placeholder='email'
+        selectionColor = "red"
+        value={this.state.email_text}
+        onChangeText={email_text => this.setState({ email_text })}
+      />
+      </View>
+
+      <View >
+      <TextInput
+        label='passWord'
+        placeholder='email'
+        value={this.state.password_text}
+        onChangeText={password_text => this.setState({ password_text })}
+      />
+      </View>
+
+      <View>
         <Button
-          title="Login to your accounr"
+          title="Login"
           onPress={this.handleSubmit}
           // onPress={()=>{this.props.navigation.navigate("App")}}
         />
+      </View>
 
-
+      <View>
         <TouchableOpacity onPress={()=>{this.props.navigation.navigate("SignUp")}}>
-          <Text style={{textAlignVertical: "center",textAlign: "center", marginTop: 10}}> Dont have an account </Text>
+          <Text style={{textAlignVertical: "center",textAlign: "center", marginTop: 10}}>Don't have an account?</Text>
         </TouchableOpacity>
 
-
+      </View>
       </View>
     );
   }
@@ -134,6 +162,9 @@ const styles = StyleSheet.create({
     marginTop: 0,
     padding: 20,
     backgroundColor: '#ffffff',
+    alignSelf: 'center',
+    width: "100%",
+    height: "100%"
   },
   inputsContainer: {
     flex: 1

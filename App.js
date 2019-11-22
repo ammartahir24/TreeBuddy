@@ -22,6 +22,8 @@ import {
 const AuthenticationStack = createStackNavigator({
   LogIn : {
     screen: LogIn,
+    // screen: SignUp,
+
   },
   SignUp : {
     screen : SignUp,

@@ -15,30 +15,81 @@ import {
 
 import t from 'tcomb-form-native';
 import {signin} from "../firebase_integeration/databasefunctions"
+import {create_user} from "../firebase_integeration/databasefunctions"
 
 const Form = t.form.Form;
+
 const User = t.struct({
-  username: t.String,
+  name: t.String,
   email: t.String,
   password: t.String,
-  age: t.Number
+  confirmpassword: t.String
+  
 });
+
 const options = {
   fields: {
     email: {
-      error: 'Without an email address how are you going to reset your password when you forget it?'
+      error: 'Email missing'
     },
-    username: {
-      error: 'Its only fair if we know each other\'s name. Isnt it.'
+    name: {
+      error: 'Name missing'
     },
     password: {
-      error: 'Choose something you use on a dozen other sites or something you won\'t remember'
+      error: 'Password missing',
+      password: true,
+      secureTextEntry: true
     },
-    age: {
-      error: 'If this takes off, we will send you a birthday card.',
+
+    confirmpassword: {
+      error: 'Password error',
+      password: true,
+      secureTextEntry: true
     },
   },
 };
+
+const check = async(username, email, passWord, age) => {
+
+  const data = {
+            Name : username,
+            Email : email,
+            Password : passWord,
+            Trees: 0,
+            Rating: 0,
+        }
+
+  let isValid = await create_user(data);
+  // console.log("Ek min: ", isValid)
+
+  // if(isValid == "false")
+  // {
+  //   ans = "false";
+  //   Alert.alert(
+  //     'Login Failed',
+  //     '',
+  //     [
+  //       {text: 'Try again', onPress: () => console.log('trying again')},
+        
+  //       // {text: 'OK', onPress: () => console.log('OK Pressed')},
+  //     ],
+  //     {cancelable: false},
+
+  // );
+  //     return ans;
+    
+  // }
+  // else if(isValid == "true")
+  // {
+  //   // this.props.navigation.navigate("App");
+  //   return "true";
+  // }
+
+  // return;
+
+}
+
+
 export default class SignUp extends Component {
 
   static navigationOptions = {
@@ -49,6 +100,11 @@ export default class SignUp extends Component {
    handleSubmit = () => {
     const value = this._form.getValue(); // use that ref to get the form value
     console.log('value: ', value);
+    // if(value.password != value.confirmpassword)
+    // {
+
+    // }
+    check(value.name, value.email, value.password)
   }
 
   render() {
@@ -62,7 +118,7 @@ export default class SignUp extends Component {
         />
           
         <Button
-          title="That's right Dawg, create it"
+          title="Create Account"
           onPress={this.handleSubmit}
         />
       </View>
@@ -81,6 +137,9 @@ const styles = StyleSheet.create({
 
     //hex color below
     // backgroundColor: '#144314',
+    alignSelf: 'center',
+    width: "100%",
+    height: "100%"
 
   },
 
