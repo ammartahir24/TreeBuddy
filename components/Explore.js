@@ -40,7 +40,7 @@ export default class Explore extends React.Component {
        { enableHighAccuracy: true, timeout: 200000 },
     );
 
-    if(this.props.toShow == undefined){
+    if(this.props.toShow == undefined && this.props.navigation.ID == undefined){
       this.getMarkers(-1);
     }
     else{
