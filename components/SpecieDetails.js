@@ -10,7 +10,7 @@ export default class PlantDetails extends React.Component {
     super(props);
 
     this.state = {
-      SP_ID: null,
+      SP_ID: 23,
       SP_name: "Rosewood",
       SP_Bioname: "Dalbergia Stevensonii ",
       Occurences: '2',
@@ -33,10 +33,10 @@ export default class PlantDetails extends React.Component {
 
   }
 
-  viewSpecie = (e) =>{
+  LocateSpecie = (e) =>{
     e.preventDefault();
-    console.log("redirect")
-    this.props.navigation.navigate('SpecieDetails', {ID: this.state.SP_ID, Name: this.state.SP_name, Bio: this.state.SP_Bioname})
+    console.log("redirect2")
+    this.props.navigation.navigate('Explore', {ID: this.state.SP_ID})
   }
 
   static navigationOptions = ({navigation}) => ({
@@ -94,7 +94,7 @@ export default class PlantDetails extends React.Component {
             </View>
 
             <View style = {{height: '20%', width: '100%', marginLeft: 10}}>
-              <TouchableHighlight  style = {{backgroundColor: '#b9f6ca', width: '55%',height: '70%', alignSelf: 'center', borderRadius: 30}}>
+              <TouchableHighlight underlayColor="#87c197" onPress ={(e) =>{this.LocateSpecie(e)}}  style = {{backgroundColor: '#b9f6ca', width: '55%',height: '70%', alignSelf: 'center', borderRadius: 30}}>
                 <View onPress = {(e)=> {this.viewSpecie(e)}} style = {{width: '100%', flexDirection: 'row', alignSelf: 'center', marginLeft: '20%', paddingTop:10}}>
                   <Icon name="md-eye" style = {{alignSelf: 'center'}} color = "white" size = {30}/>
                   <Text style={styles.fullWidthButtonText}>Locate Specie</Text>

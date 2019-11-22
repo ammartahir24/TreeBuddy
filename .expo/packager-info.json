@@ -1,1 +1,14 @@
+<<<<<<< HEAD
 {}
+=======
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 2536,
+  "expoServerNgrokUrl": "https://6b-af8.s-hamza-ahmad.treebuddy.exp.direct",
+  "packagerNgrokUrl": "https://packager.6b-af8.s-hamza-ahmad.treebuddy.exp.direct",
+  "ngrokPid": 7696,
+  "webpackServerPort": null
+}
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035

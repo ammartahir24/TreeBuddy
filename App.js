@@ -7,6 +7,7 @@ import SignUp from './components/SignUp'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
+import Camera from './components/CameraComponent'
 // import AddTree from './components/AddTree'
 import PlantDetails from './components/PlantDetails'
 import SpecieDetails from './components/SpecieDetails'
@@ -24,12 +25,16 @@ import {
 const AuthenticationStack = createStackNavigator({
   LogIn : {
 <<<<<<< HEAD
+<<<<<<< HEAD
     screen: LogIn,
     // screen: SignUp,
 
 =======
     screen: PlantDetails,
 >>>>>>> 9a855d741e900c9915a45adf7fadb109e6a29f12
+=======
+    screen: Camera,
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
   },
   SignUp : {
     screen : SignUp,

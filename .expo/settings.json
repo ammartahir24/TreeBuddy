@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+=======
+  "urlRandomness": "6b-af8",
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
   "hostType": "lan",
   "lanType": "ip",
   "dev": true,
