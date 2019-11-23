@@ -3,7 +3,7 @@ import * as Permissions from 'expo-permissions';
 import React, { Component } from 'react';
 import { Button, ActivityIndicator, Icon, Item, Dimensions, Platform, View, TextInput, TouchableOpacity, TouchableHighlight, Text, KeyboardAvoidingView, Image, ToastAndroid, Alert } from 'react-native';
 // import { Ionicons, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
-// const axios = require('axios')
+const axios = require('axios')
 import * as ImagePicker from 'expo-image-picker';
 import * as ImageManipulator from 'expo-image-manipulator';
 import Constants from 'expo-constants';
@@ -12,7 +12,7 @@ import ActionButton from 'react-native-action-button';
 
 // import * as Location from 'expo-location';
 
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 // import ApiKeys from './ApiKeys';
 // import { ImagePicker } from 'expo';
 
@@ -70,13 +70,13 @@ class CameraComponent extends Component {
   //   this.setState({ location: loc })
   // }
 
-  // uploadImage = async (uri, imageName) => {
-  //     const response = await fetch(uri)
-  //     const blob = await response.blob()
+    uploadImage = async (uri, imageName) => {
+      const response = await fetch(uri)
+      const blob = await response.blob()
 
-  //     var ref = firebase.storage().ref().child("images/" + imageName)
-  //     return ref.put(blob)
-  //   }
+      var ref = firebase.storage().ref().child("images/" + imageName)
+      return ref.put(blob)
+    }
 
 
     _pickImage = async () => {

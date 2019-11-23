@@ -13,6 +13,7 @@ import PlantDetails from './components/PlantDetails'
 import RegisterPlant from "./components/RegisterPlant"
 import SpecieDetails from './components/SpecieDetails'
 import {createDrawerNavigator} from "react-navigation-drawer";
+import Rewards from './components/Rewards'
 
 import {
   StyleSheet,
@@ -27,7 +28,7 @@ import {
 
 const AuthenticationStack = createStackNavigator({
   LogIn : {
-    screen: LogIn,
+    screen: SpecieDetails,
   },
   SignUp : {
     screen : SignUp,
