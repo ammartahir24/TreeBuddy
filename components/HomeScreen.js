@@ -105,7 +105,6 @@ export default class HomeScreen extends React.Component {
     return {
       headerLeft: (<TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
                       <Icon name="md-menu" size={32} color="white" style={{marginLeft: 20}}/>
-                      {/* <Image source={require('../hamburger.png')} style={{width:20, height:17, marginLeft: 20}} /> */}
                   </TouchableOpacity>),
       headerRight: (
         <View style={{height:40,width: Math.round(Dimensions.get('window').width)*0.85,alignSelf:'center',flex:1,flexDirection:'row'}}>
@@ -115,7 +114,6 @@ export default class HomeScreen extends React.Component {
           style={{color: 'white',fontSize:14, height: 40,width:Math.round(Dimensions.get('window').width)*0.7, borderColor: 'black', borderBottomWidth: 1, }}
           placeholder={" Search "}
           onChangeText={(search) => params.handleUpdateSearch(search)}
-          // onKeyPress ={(key)=>console.log(key)}
           />
           <View style={{height:40,width:Math.round(Dimensions.get('window').width)*0.15,alignItems: 'center'}}>
           <TouchableOpacity style={{justifyContent:'center',alignSelf:'center', alignItems:'center'}}onPress={() => navigation.toggleDrawer()}> 
@@ -189,41 +187,6 @@ export default class HomeScreen extends React.Component {
               </View>
             </View>
           </View> 
-            {/* <View style={{width: '100%', height: '15%'}}/>
-            <View style={{width:"100%", height:"20%"}}>
-            <TouchableHighlight style={styles.fullWidthButton} onPress={(e) => {
-              this.props.navigation.navigate("MyTrees")
-            }}>
-                <Text style={styles.fullWidthButtonText}>My Trees</Text>
-            </TouchableHighlight>
-            </View>
-            
-            <View style={{width: '100%', height: '5%'}}/>
-            
-            <View style={{width:"100%", height:"20%"}}>
-            <TouchableHighlight style={styles.fullWidthButton} onPress={(e) => {
-              this.props.navigation.navigate("ScanList")
-            }}>
-                <Text style={styles.fullWidthButtonText}>{this.state.numScans} people scanned your trees this week</Text>
-            </TouchableHighlight>
-            </View>
-            
-            <View style={{width: '100%', height: '5%'}}/>
-            
-            <View style={{width:"100%", height:"20%"}}>
-            <TouchableHighlight style={styles.fullWidthButton} onPress={(e) => {
-              this.props.navigation.navigate("WaterList")
-            }}>
-                <Text style={styles.fullWidthButtonText}>Water your plants at {this.state.waterTime} today</Text>
-            </TouchableHighlight>
-            </View>
-
-            <View style={{width: '100%', height: '2%'}}/>
-
-            <View style={{width:"100%",height:"13%",flex:1,flexDirection: 'row'}}>
-              <View style={{width:"80%",height:"100%",alignItems: 'center'}}/>
-                <Icon name="ios-add-circle" size={64} color="#00695c" onPress={() => console.log("exsqueeze me")}/> */}
-            {/* </View> */}
 
           {/* Search code */}
           <View style={{borderRadius:10,flexGrow:1,width:"100%", height:100*numResults, position:"absolute",top:0, backgroundColor:"transparent"}}>
