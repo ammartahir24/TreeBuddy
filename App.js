@@ -9,6 +9,7 @@ import Profile from './components/Profile'
 import Settings from './components/Settings'
 import Camera from './components/CameraComponent'
 // import AddTree from './components/AddTree'
+import QRcode from "./components/Qrcode"
 import PlantDetails from './components/PlantDetails'
 import RegisterPlant from "./components/RegisterPlant"
 import SpecieDetails from './components/SpecieDetails'
@@ -27,7 +28,7 @@ import {
 
 const AuthenticationStack = createStackNavigator({
   LogIn : {
-    screen: LogIn,
+    screen: RegisterPlant,
   },
   SignUp : {
     screen : SignUp,
@@ -86,6 +87,8 @@ const switchnav = createSwitchNavigator({
 
 // const MyApp = createAppContainer(MyDrawerNavigator);
 const MyApp = createAppContainer(switchnav);
+
+console.disableYellowBox = true;
 
 export default class App extends React.Component {
   render() {

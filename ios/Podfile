@@ -39,4 +39,8 @@ target 'TreeBuddy' do
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 >>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+  pod 'react-native-view-shot', :path => '../node_modules/react-native-view-shot'
+
 end
