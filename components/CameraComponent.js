@@ -3,7 +3,7 @@ import * as Permissions from 'expo-permissions';
 import React, { Component } from 'react';
 import { Button, ActivityIndicator, Icon, Item, Dimensions, Platform, View, TextInput, TouchableOpacity, TouchableHighlight, Text, KeyboardAvoidingView, Image, ToastAndroid, Alert } from 'react-native';
 // import { Ionicons, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
-const axios = require('axios')
+// const axios = require('axios')
 import * as ImagePicker from 'expo-image-picker';
 import * as ImageManipulator from 'expo-image-manipulator';
 import Constants from 'expo-constants';

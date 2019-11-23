@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { AppRegistry, StyleSheet, Dimensions, View,  Container, Text, Image } from "react-native";
+import { AppRegistry, StyleSheet, Dimensions, View,  Container, Text, Image, TouchableWithoutFeedback } from "react-native";
 import { TabNavigator } from "react-navigation";
 import MapView from 'react-native-maps'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export default class Explore extends React.Component {
@@ -57,7 +58,22 @@ export default class Explore extends React.Component {
     this.props.navigation.navigate('PlantDetails', {location: loc})
   }
 
+
+  static navigationOptions = ({navigation}) => ({
+    headerLeft: (
+      <TouchableWithoutFeedback onPress={() => navigation.goBack()} >
+        <Icon name="md-arrow-round-back"  style={{ marginTop: 10, marginLeft: 10}} size={32} color="#eedede" />
+      </TouchableWithoutFeedback>
+    ),
+    headerStyle: {
+        backgroundColor: '#00695c',
+    },
+    title:"Explore",
+    headerTintColor:"#eedede",
+  });
+
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <MapView 
         style={styles.map} 

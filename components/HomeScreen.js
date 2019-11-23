@@ -84,40 +84,45 @@ export default class HomeScreen extends React.Component {
         handleUpdateSearch: this.updateSearch
     });
   }
+
   updateSearch = search => {
     this.state.matches = this.state.searchlist.filter(match => (search.toLowerCase().includes(match.name.toLowerCase()) || match.name.toLowerCase().includes(search.toLowerCase())));
     this.setState({search});
   }
+
   componentWillMount() {
     this.setState({
       interval: setInterval(() => {
         this.setState({
           position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
         });
-      }, 2000)
+      }, 5000)
     });
   }
+
   componentWillUnmount() {
     clearInterval(this.state.interval);
   }
+
   static navigationOptions = ({navigation}) => {
     const {params = {}} = navigation.state;
     return {
       headerLeft: (<TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
-                      <Icon name="md-menu" size={32} color="white" style={{marginLeft: 20}}/>
+                      <Icon name="md-menu" size={32} color="#eedede" style={{marginLeft: 20}}/>
                   </TouchableOpacity>),
       headerRight: (
         <View style={{height:40,width: Math.round(Dimensions.get('window').width)*0.85,alignSelf:'center',flex:1,flexDirection:'row'}}>
 
           <TextInput
           inlineImageLeft='search_icon'
-          style={{color: 'white',fontSize:14, height: 40,width:Math.round(Dimensions.get('window').width)*0.7, borderColor: 'black', borderBottomWidth: 1, }}
+          style={{color: '#eedede',fontSize:14, height: 40,width:Math.round(Dimensions.get('window').width)*0.7, borderColor: '#eedede', borderBottomWidth: 1, }}
+          underlineColorAndroid="transparent"
           placeholder={" Search "}
           onChangeText={(search) => params.handleUpdateSearch(search)}
           />
           <View style={{height:40,width:Math.round(Dimensions.get('window').width)*0.15,alignItems: 'center'}}>
           <TouchableOpacity style={{justifyContent:'center',alignSelf:'center', alignItems:'center'}}onPress={() => navigation.toggleDrawer()}> 
-            <Icon name='md-camera' size={32} color="white" style={{marginTop:5}}/>
+            <Icon name='md-camera' size={32} color="#eedede" style={{marginTop:5}}/>
           </TouchableOpacity>
           </View>
       </View>),
@@ -140,14 +145,14 @@ export default class HomeScreen extends React.Component {
         numResults = 4
       }
       return (
-        <ImageBackground style={{width: '100%', height: '100%',backgroundColor:'#e4e4e4'}}>
+        <View source = {require('../bgpink1.jpg')} style={{width: "100%", height: "100%"}}>
           <View style={{flex: 1, flexDirection: 'column', height: '100%',width: '100%'}}>
             <View style={{height:"50%",width: '100%',bottomBorderRadius:25}}>
               <Slideshow 
                 dataSource={this.state.dataSource}
                 position={this.state.position}
                 height={height*0.5-40}
-                titleStyle={{fontSize:18, color:"white", fontWeight:"bold"}}
+                titleStyle={{fontSize:25, color:"white", fontWeight:"bold"}}
                 captionStyle={{fontSize:14, color:"white", fontStyle:"italic"}}
                 onPositionChanged={position => this.setState({ position })} 
                 />     
@@ -156,45 +161,46 @@ export default class HomeScreen extends React.Component {
               <TouchableOpacity onPress={(e) => {
                 this.props.navigation.navigate("MyTrees")
               }} style={{width:"70%",justifyContent:"center"}}>
-                  <Text style={{fontWeight:"bold",fontSize:28, color:"white", textAlignVertical: "center",marginLeft:15}}>Your trees</Text>
+                  <Text style={{fontWeight:"bold",fontSize:28, color:"#eedede", textAlignVertical: "center",marginLeft:15}}>Your trees</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(e) => {
                   this.props.navigation.navigate("MyTrees")
                 }} style={{width:'15%', justifyContent:'center'}}>
-                  <Icon name='md-list-box' size={32} color="white" style={{marginTop:5}} />
+                  <Icon name='md-list-box' size={32} color="#eedede" style={{marginTop:5}} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(e) => {
-                  this.props.navigation.navigate("MyTrees")
+                  this.props.navigation.navigate("RegisterPlant")
                 }} style={{width:'15%', justifyContent:'center'}}>
-                  <Icon name='md-add-circle' size={32} color="white" style={{marginTop:5}} />
+                  <Icon name='md-add-circle' size={32} color="#eedede" style={{marginTop:5}} />
                 </TouchableOpacity>
 
             </View>
-            <View style={{flexDirection:'row', height:'40%',width:'100%'}}> 
+            <View style={{flexDirection:'row', height:'40%',width:'100%', backgroundColor: '#eedede'}}> 
               <View style={{width:'50%',height:'100%',justifyContent:"center",alignItems: 'center'}}>
                   <TouchableOpacity onPress={(e) => {
                     this.props.navigation.navigate("ScanList")
                   }} style={{justifyContent:'center',alignItems:'center', height:150,width:150,backgroundColor:'#00695c',borderRadius:10,borderWidth:2,borderColor:"#00695c",elevation:10}}>
-                  <Text style={{color:"white",fontSize:20, fontWeight:"bold",textAlign:"center"}}>{this.state.numScans} people scanned your trees this week</Text>
+                  <Text style={{color:"#eedede",fontSize:20, fontWeight:"bold",textAlign:"center"}}>{this.state.numScans} people scanned your trees this week</Text>
                   </TouchableOpacity>
               </View>
               <View style={{width:'50%',height:'100%',justifyContent:"center",alignItems: 'center'}}>
                   <TouchableOpacity onPress={(e) => {
                     this.props.navigation.navigate("WaterList")
                   }} style={{justifyContent:'center',alignItems:'center',height:150,width:150,backgroundColor:'#00695c',borderRadius:10,borderWidth:2,borderColor:"#00695c",elevation:10}}>
-                  <Text style={{color:"white",fontSize:20, fontWeight:"bold",textAlign:"center"}}>Water your plants at {this.state.waterTime} today</Text>
+                  <Text style={{color:"#eedede",fontSize:20, fontWeight:"bold",textAlign:"center"}}>Water your plants at {this.state.waterTime} today</Text>
                   </TouchableOpacity>
               </View>
             </View>
+            <View style = {[this.state.matches.length>0 && this.state.search.length>0? styles.overlay: null]}/>
           </View> 
 
           {/* Search code */}
-          <View style={{borderRadius:10,flexGrow:1,width:"100%", height:100*numResults, position:"absolute",top:0, backgroundColor:"transparent"}}>
+          <View style={{borderRadius:10,flexGrow:1,width:"100%", height:70*numResults, position:"absolute",top:0, backgroundColor:"transparent"}}>
               <ScrollView>
                 {
                   this.state.matches.map((item,index) => {
                     return(
-                    <View style={{borderColor:"#00695c",flex:1, flexDirection:'row',opacity:5,borderRadius:5,borderWidth:1,paddingTop:20, paddingBottom:20, paddingLeft:5, backgroundColor:"white"}}>
+                    <View key = {index} style={{ borderColor:"#00695c",flex:1, flexDirection:'row',opacity:5,borderRadius:5,borderWidth:1,paddingTop:20, paddingBottom:20, paddingLeft:5, backgroundColor:"#eedede"}}>
                       <Image source = {{uri:item.img}} style={{borderColor:"#00695c" ,width: 50, height: 50, borderRadius: 150 / 2, overflow: "hidden", borderWidth: 3}}/>
                       <Text style={{color:"#00695c",fontSize:20,textAlignVertical: "center",marginLeft:15}}>{item.name}</Text>
                     </View>
@@ -205,7 +211,7 @@ export default class HomeScreen extends React.Component {
               </ScrollView>
           </View>
           {/* End Search Code */}
-        </ImageBackground>
+        </View>
         
       );
     }
@@ -229,5 +235,9 @@ export default class HomeScreen extends React.Component {
       fontSize:24,
       color: 'white',
       padding: 15
-    }
+    },
+    overlay: {
+     ...StyleSheet.absoluteFillObject,
+     backgroundColor: 'rgba(0,0,0,0.5)'
+   }
   })

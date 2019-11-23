@@ -53,7 +53,7 @@ export default class PlantDetails extends React.Component {
     ),
     headerLeft: (
       <TouchableWithoutFeedback onPress={() => navigation.goBack()} >
-        <Icon name="md-arrow-round-back"  style={{ marginTop: -150, marginLeft: 10}} size={32} color="#FFFFFF" />
+        <Icon name="md-arrow-round-back"  style={{ marginTop: -150, marginLeft: 10}} size={32} color="#eedede" />
       </TouchableWithoutFeedback>
     ),
   });
