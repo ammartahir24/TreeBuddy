@@ -137,7 +137,174 @@ async function create_user(info) {
 }
 
 
+async function getAllPlants()
+{
+  var start = new Date();
+  let data;
+  let snapshot = await database.collection('plants').get()
+    .then(snap => {
+      // console.log(snap)
+      if (snap.empty) {
+              console.log('query failed')
+              return "QueryFailure"
+          }
+          else
+          {
+              console.log("query completed in:" , new Date() - start)
+              const data_fetched = snap.docs.map(doc => doc.data());
+              data = data_fetched
+              // console.log(data);
+              return data
+              
+          }
+
+    })
+    .catch(function(error) {
+      console.error("Error getting: ", error);
+  });
+
+    return data;
+
+}
+
+async function getSinglePlant(plant_name)
+{
+  var start = new Date();
+  let data;
+  let snapshot = await database.collection('plants').where('Name', '==',plant_name).get()
+    .then(snap => {
+      // console.log(snap)
+      if (snap.empty) {
+              console.log('query failed')
+              return "QueryFailure"
+              
+          }
+          else
+          {
+              console.log("query completed in:" , new Date() - start)
+              const data_fetched = snap.docs.map(doc => doc.data());
+              data = data_fetched
+              // console.log(data);
+
+              return data
+              
+          }
+
+    })
+    .catch(function(error) {
+      console.error("Error getting: ", error);
+  });
+
+    return data;
+
+}
+
+
+async function getPlants(plant_name){
+
+  let plants_data;
+  if(plant_name == "All"){
+    plants_data = await getAllPlants()
+    console.log(plants_data)
+    return plants_data
+  }
+  else
+  {
+    plants_data = await getSinglePlant(plant_name)
+    console.log(plants_data)
+    return plants_data
+
+  }
+}
+
+
+async function get_AllSpecies (){
+  var start = new Date();
+  let data;
+  let snapshot = await database.collection('species').get()
+    .then(snap => {
+      // console.log(snap)
+      if (snap.empty) {
+              console.log('query failed')
+              return "QueryFailure";
+              
+          }
+          else
+          {
+              console.log("query completed in:" , new Date() - start)
+              const data_fetched = snap.docs.map(doc => doc.data());
+              data = data_fetched
+              // console.log(data);
+
+              return data
+              
+          }
+
+    })
+    .catch(function(error) {
+      console.error("Error getting: ", error);
+  });
+
+    return data;
+}
+
+async function getSingleSpecie(specie_name){
+  var start = new Date();
+  let data;
+  let snapshot = await database.collection('species').where("Specie_Name",'==', specie_name).get()
+    .then(snap => {
+      // console.log(snap)
+      if (snap.empty) {
+              console.log('query failed')
+              return "QueryFailure";
+              
+          }
+          else
+          {
+              console.log("query completed in:" , new Date() - start)
+              const data_fetched = snap.docs.map(doc => doc.data());
+              data = data_fetched
+              // console.log(data);
+
+              return data
+              
+          }
+
+    })
+    .catch(function(error) {
+      console.error("Error getting: ", error);
+  });
+
+    return data;
+}
+
+async function getSpecieFunc (input){
+  let specie_data;
+  if(input == "All"){
+    specie_data = await get_AllSpecies()
+    console.log(specie_data)
+    return specie_data
+  }
+  else
+  {
+    console.log(input)
+    specie_data = await getSingleSpecie(input)
+    console.log(specie_data)
+    return specie_data
+
+  }
+  // console.log(specie_data)
+}
+
+
+
 export {
     signin,
     create_user,
+    getPlants,
+    getSinglePlant,
+    getAllPlants,
+    getSpecieFunc,
+    getSingleSpecie,
+    get_AllSpecies,
 };

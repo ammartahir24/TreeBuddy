@@ -10,8 +10,15 @@ import Settings from './components/Settings'
 import Camera from './components/CameraComponent'
 // import AddTree from './components/AddTree'
 import PlantDetails from './components/PlantDetails'
+<<<<<<< HEAD
+import MyTrees from './components/MyTrees'
+import Animation from './components/Animation'
+import ScanList from './components/ScanList'
+import WaterList from './components/WaterList'
+=======
 import RegisterPlant from "./components/RegisterPlant"
 import SpecieDetails from './components/SpecieDetails'
+>>>>>>> 54707e969f74ecf76684a8a64202ed41ada6cb9e
 import {createDrawerNavigator} from "react-navigation-drawer";
 import Rewards from './components/Rewards'
 
@@ -57,6 +64,17 @@ const AppNavigator = createStackNavigator({
   Settings : {
     screen : Settings,
   },
+  MyTrees : {
+    screen: MyTrees,
+  },
+  Animation : {
+    screen: Animation,
+  },
+  ScanList : {
+    screen: ScanList,
+  },
+  WaterList : {
+    screen: WaterList,
   RegisterPlant : {
     screen : RegisterPlant,
   }
