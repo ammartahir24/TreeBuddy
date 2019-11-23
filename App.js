@@ -8,6 +8,10 @@ import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
 import PlantDetails from './components/PlantDetails'
+import MyTrees from './components/MyTrees'
+import Animation from './components/Animation'
+import ScanList from './components/ScanList'
+import WaterList from './components/WaterList'
 import {createDrawerNavigator} from "react-navigation-drawer";
 
 import {
@@ -44,6 +48,18 @@ const AppNavigator = createStackNavigator({
   Settings : {
     screen : Settings,
   },
+  MyTrees : {
+    screen: MyTrees,
+  },
+  Animation : {
+    screen: Animation,
+  },
+  ScanList : {
+    screen: ScanList,
+  },
+  WaterList : {
+    screen: WaterList,
+  }
 });
 
 // const AppContainer = createAppContainer(AppNavigator);
