@@ -7,6 +7,7 @@ import {
   Text,
   KeyboardAvoidingView,
   DatePickerAndroid,
+  CameraRoll,
 } from 'react-native';
 import { TextInput, Button, Portal, Provider} from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
@@ -15,6 +16,9 @@ import Constants from 'expo-constants';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Modal, { ModalContent } from 'react-native-modal';
+import QRCode from 'react-native-qrcode';
+import ViewShot from "react-native-view-shot";
+
 
 export default class RegisterPlant extends React.Component{
   constructor(props) {
@@ -28,7 +32,7 @@ export default class RegisterPlant extends React.Component{
         text: "",
         date: new Date(),
         dateText: 'Pick a date',
-        visibleModal : 1
+        visibleModal : null
     }
     this.showDatePicker.bind(this);
     }
@@ -62,7 +66,6 @@ export default class RegisterPlant extends React.Component{
   }
 
   _pickImage = async () => {
-    // console.log("HERE")
     let result = await ImagePicker.launchCameraAsync({allowsEditing: true,
       aspect: [4, 3], quality: 1})
     console.log("here", result.cancelled)
@@ -71,17 +74,11 @@ export default class RegisterPlant extends React.Component{
         { resize: { width: 1000 }}
       ])
       this.setState({ image: resizedPhoto.uri })
-      // console.log(this.state.image)
-      // console.log(this.state.location)
 
       img_type = ((this.state.image).split(".").pop())
       img_type = "jpg"
       const type_ = "image/" + img_type;
       const name_ = "photo." + img_type;
-
-      // console.log(name_)
-      // console.log(type_)
-      // console.log("-------------")
 
       const formData = new FormData();
       const photo = {
@@ -91,58 +88,42 @@ export default class RegisterPlant extends React.Component{
       }
 
       formData.append('image', photo)
-
-      // this.setState({ text: "Estimating Quality.."})
-    
-      // console.log(formData)
-
-
-      // const res = await axios.post('https://soil-sproj.herokuapp.com/', formData, {
-      //     headers: {
-      //       'content-type': `multipart/form-data`,
-      //     }
-      // }).then((response) => {
-      //     this.setState({ text: "Uploading Image.."})
-      //     ToastAndroid.show(String(response.data['score']), ToastAndroid.LONG)
-      //     // console.log(this.state.text)
-      //     let lat = String(this.state.location["coords"]["latitude"])
-      //     let long = String(this.state.location["coords"]["longitude"])
-
-      //     this.uploadImage(this.state.image, lat + "_" + long)
-      //     .then(() => {
-      //       // ToastAndroid.show("Upload Successful!", ToastAndroid.LONG)
-      //       this.setState({firebaseUpload: true})
-      //     })
-      //     .catch((error) => {
-      //       ToastAndroid.show(error.message)
-      //       // console.log(error.message)
-      //     });
-      // }).catch(function (err) {
-      //   console.log(err);
-      // });
-
-      // this.setState({ loading: false })
-      // this.setState({ image: null })
-
-      // this._pickImage()
-      
     }
   }
   _showModal = () => this.setState({ visible: true });
   _hideModal = () => this.setState({ visible: false });
   _renderModalContent = () => (
-    <View style={styles.modalContent}>
-      <Text>Hello!</Text>
-      <Button>Close</Button>
+    
+    //Do backend processing here.
+    
+    <View style = {{opacity: 0.60}} >
+      <ViewShot ref="viewShot" options={{ format: "jpg", quality: 0.9 }}>
+        <View style={{paddingLeft:"25%"}}>
+          <QRCode
+          value="http://facebook.github.io/react-native/"
+          size={200}
+          // bgColor='black'
+          // fgColor='white'
+          />
+        </View>
+      </ViewShot>
+      <View style={{height: "10%"}}/>
+      <View>
+        <Button icon="content-save" mode="contained" onPress={()=>{this.qrcodesave();this.state.visibleModal=0;this.forceUpdate()}} >Save QR code to gallery</Button>
+      </View>
     </View>
+
   );
-
-
+  qrcodesave = () => {
+    this.refs.viewShot.capture().then(uri => {
+      console.log("do something with ", uri);
+      CameraRoll.saveToCameraRoll(uri)
+    });
+}
 
   render() {
     const {navigate} = this.props.navigation;
     const { hasCameraPermission } = this.state
-    // const {visible} = this.state
     if (0) {
       return <View />
     }
@@ -152,109 +133,72 @@ export default class RegisterPlant extends React.Component{
     else{
       return (
         <KeyboardAvoidingView  behavior="padding" enabled>
-        <View style={{height: '100%', width: '100%', alignItems: 'center' }}>
-          {!this.state.image? <View style = {{width : '100%', height: '35%', backgroundColor: '#F6F6F6' }}>
+          <View style={{height: '100%', width: '100%', alignItems: 'center' }}>
+            {!this.state.image? <View style = {{width : '100%', height: '35%', backgroundColor: '#F6F6F6' }}>
             <Icon style = {{alignSelf: 'center' }} name = "md-camera" size={150} color = "#C7C7C7"/>
             <Text style = {{alignSelf: 'center', color: "#C7C7C7", fontSize:20}}> Add an Image of the Tree</Text>
             </View>:
-           <Image
-                                  style={{width: "100%", height: "35%"}}
-                                  source={{uri: this.state.image}}
-                                />
-           }
-          
-          <ImageBackground
-                style={{ opacity: 0.8, height: "100%", width:"100%"}}
-                source = {require('../backdrop1jpg.jpg')}
-          >
-            <View style={{paddingRight:"5%", paddingLeft:"5%", paddingTop:"15%" }}>
-                <TextInput
-                  style = {backgroundColor= "white"}
-                  label="Nick Name"
-                  onChangeText={(text) => this.setState({text})}
-                  value={this.state.text}
-                  isFocused = "true"
-                  mode = "outlined"
-                  theme={{ colors: { placeholder: '#00695c', text: '#00695c', primary: 'black',
-                  underlineColor: 'transparent', 
-                  background: '#e6e6fa' 
-                } }}
-                />
-                <View style={{height: "5%"}}/>
-                <TextInput
-                  label="Type of tree"
-                  // placeholder="Type of tree"
-                  onChangeText={(text) => this.setState({text})}
-                  value={this.state.text}
-                  isFocused = "true"
-                  mode = "outlined"
-                  color = "white"
-                  theme={{ colors: { placeholder: '#00695c', text: '#00695c', primary: 'black',
-                  underlineColor: 'transparent', 
-                  background: '#e6e6fa' 
-                } }}
-                />
-                <View style={{height: "5%"}}/>
-                <Button icon="calendar" mode="contained" onPress={() => this.showDatePicker({date: this.state.date})}>
-                  When was the tree planted?
-                </Button>
-                <Button
-                  style={{ marginTop: 30 }}
-                  // onPress={this.setState({ visibleModal: 1 })}
-                >show modal</Button>
-                {/* <View style={{height: "25%"}}/> */}
-                <View style = {{paddingLeft:"60%"}}>
-                <Button mode="contained" onPress={() => console.log('Pressed')}>
-                  Submit
-                </Button>
-                {/* <Modal visible={visible} onDismiss={this._hideModal}>
-                  <Text>Example Modal</Text>
-                </Modal> */}
-                <Modal isVisible={this.state.visibleModal === 1}>
-                  {this._renderModalContent()}
-                </Modal>
+            <Image
+                                    style={{width: "100%", height: "35%"}}
+                                    source={{uri: this.state.image}}
+                                  />
+            }
             
-                </View>
-                </View>
-              {/* <Button title={this.state.dateText} onPress={() => this.showDatePicker({date: this.state.date})}/> */}
-            
-          </ImageBackground>
-          <View style={{top: "28%", right: 0, width: "20%", height: "15%",position: "absolute"}}>
-            <ActionButton buttonColor="#b9f6ca" fixNativeFeedbackRadius= {true} position = "right" nativeFeedbackRippleColor  = "#87c197" onPress={this._pickImage}>
-            </ActionButton>
+            <ImageBackground
+                  style={{ opacity: 0.8, height: "100%", width:"100%"}}
+                  source = {require('../backdrop1jpg.jpg')}
+            >
+              <View style={{paddingRight:"5%", paddingLeft:"5%", paddingTop:"15%" }}>
+                  <TextInput
+                    style = {backgroundColor= "white"}
+                    label="Nick Name"
+                    onChangeText={(text) => this.setState({text})}
+                    value={this.state.text}
+                    isFocused = "true"
+                    mode = "outlined"
+                    theme={{ colors: { placeholder: '#00695c', text: '#00695c', primary: 'black',
+                    underlineColor: 'transparent', 
+                    background: '#e6e6fa' 
+                  } }}
+                  />
+                  <View style={{height: "5%"}}/>
+                  <TextInput
+                    label="Type of tree"
+                    onChangeText={(text) => this.setState({text})}
+                    value={this.state.text}
+                    isFocused = "true"
+                    mode = "outlined"
+                    color = "white"
+                    theme={{ colors: { placeholder: '#00695c', text: '#00695c', primary: 'black',
+                    underlineColor: 'transparent', 
+                    background: '#e6e6fa' 
+                  } }}
+                  />
+                  <View style={{height: "5%"}}/>
+                  <Button icon="calendar" mode="contained" onPress={() => this.showDatePicker({date: this.state.date})}>
+                    When was the tree planted?
+                  </Button>
+                  
+                  <View style={{height: "25%"}}/>
+                  <View style = {{paddingLeft:"60%"}}>
+                  <Button mode="contained" onPress={()=>{this.state.visibleModal = 1; this.forceUpdate()}}>
+                    Submit
+                  </Button>
+                
+                  <Modal isVisible={this.state.visibleModal === 1} coverScreen="true" onBackButtonPress={()=>{this.state.visibleModal = 0; this.forceUpdate()}}>
+                    {this._renderModalContent()}
+                  </Modal>
+              
+                  </View>
+                  </View>
+              
+            </ImageBackground>
+            <View style={{top: "28%", right: 0, width: "20%", height: "15%",position: "absolute"}}>
+              <ActionButton buttonColor="#b9f6ca" fixNativeFeedbackRadius= {true} position = "right" nativeFeedbackRippleColor  = "#87c197" onPress={this._pickImage}>
+              </ActionButton>
+            </View>
           </View>
-        </View>
         </KeyboardAvoidingView>
-
-        // <View style={{width : "100%", height : "100%"}}>
-        //   <ImageBackground
-        //         style={{ opacity: 0.8, height: "100%", width:"100%"}}
-        //         source = {require('../backdrop1jpg.jpg')}
-        //   >
-          // <View style={{paddingRight:"15%", paddingLeft:"15%", paddingTop:"15%"}}>
-          //   {/* <View style={{height: "5%"}}/> */}
-          //     <TextInput
-          //       placeholder="Nick Name"
-          //       onChangeText={(text) => this.setState({text})}
-          //       value={this.state.text}
-          //     />
-          //     <View style={{height: "5%"}}/>
-          //     <TextInput
-          //       placeholder="Type of tree"
-          //       onChangeText={(text) => this.setState({text})}
-          //       value={this.state.text}
-          //     />
-          //     <View style={{height: "5%"}}/>
-          //     <TextInput
-          //       placeholder="Planted date"
-          //       onChangeText={(text) => this.setState({text})}
-          //       value={this.state.text}
-          //     />
-          // </View>
-            
-        //   </ImageBackground>
-            
-        //   </View>
         );    
     }
   }
