@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 22892,
+  "expoServerNgrokUrl": "https://wf-vtd.anonymous.treebuddy.exp.direct",
+  "packagerNgrokUrl": "https://packager.wf-vtd.anonymous.treebuddy.exp.direct",
+  "ngrokPid": 18240,
   "webpackServerPort": null
 }

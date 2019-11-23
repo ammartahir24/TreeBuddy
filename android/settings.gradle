@@ -1,4 +1,11 @@
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
+<<<<<<< HEAD
+include ':react-native-date-picker'
+project(':react-native-date-picker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-date-picker/android')
+=======
+include ':react-native-image-picker'
+project(':react-native-image-picker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-image-picker/android')
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
 include ':react-native-screens'
 project(':react-native-screens').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-screens/android')
 include ':react-native-reanimated'

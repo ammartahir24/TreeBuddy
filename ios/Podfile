@@ -32,4 +32,11 @@ target 'TreeBuddy' do
 
   use_unimodules!
 
+<<<<<<< HEAD
+  pod 'react-native-date-picker', :path => '../node_modules/react-native-date-picker'
+=======
+
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+>>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
+
 end
