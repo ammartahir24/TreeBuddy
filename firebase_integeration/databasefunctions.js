@@ -146,6 +146,7 @@ async function getAllPlants()
       // console.log(snap)
       if (snap.empty) {
               console.log('query failed')
+              return "QueryFailure"
           }
           else
           {
@@ -175,6 +176,8 @@ async function getSinglePlant(plant_name)
       // console.log(snap)
       if (snap.empty) {
               console.log('query failed')
+              return "QueryFailure"
+              
           }
           else
           {
