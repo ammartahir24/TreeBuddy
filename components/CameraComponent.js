@@ -12,7 +12,7 @@ import ActionButton from 'react-native-action-button';
 
 // import * as Location from 'expo-location';
 
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 // import ApiKeys from './ApiKeys';
 // import { ImagePicker } from 'expo';
 
@@ -70,13 +70,13 @@ class CameraComponent extends Component {
   //   this.setState({ location: loc })
   // }
 
-  // uploadImage = async (uri, imageName) => {
-  //     const response = await fetch(uri)
-  //     const blob = await response.blob()
+    uploadImage = async (uri, imageName) => {
+      const response = await fetch(uri)
+      const blob = await response.blob()
 
-  //     var ref = firebase.storage().ref().child("images/" + imageName)
-  //     return ref.put(blob)
-  //   }
+      var ref = firebase.storage().ref().child("images/" + imageName)
+      return ref.put(blob)
+    }
 
 
     _pickImage = async () => {

@@ -7,12 +7,16 @@ import SignUp from './components/SignUp'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
-import Camera from './components/CameraComponent'
-// import AddTree from './components/AddTree'
+// import Camera from './components/CameraComponent'
 import PlantDetails from './components/PlantDetails'
+import MyTrees from './components/MyTrees'
+import Animation from './components/Animation'
+import ScanList from './components/ScanList'
+import WaterList from './components/WaterList'
 import RegisterPlant from "./components/RegisterPlant"
 import SpecieDetails from './components/SpecieDetails'
 import {createDrawerNavigator} from "react-navigation-drawer";
+import Rewards from './components/Rewards'
 
 import {
   StyleSheet,
@@ -27,7 +31,7 @@ import {
 
 const AuthenticationStack = createStackNavigator({
   LogIn : {
-    screen: LogIn,
+    screen: HomeScreen,
   },
   SignUp : {
     screen : SignUp,
@@ -47,21 +51,29 @@ const AppNavigator = createStackNavigator({
   SpecieDetails : {
     screen: SpecieDetails,
   },
-  // AddTree : {
-  //   screen : AddTree,
-  // },
   Profile : {
     screen: Profile,
   },
   Settings : {
     screen : Settings,
   },
+  MyTrees : {
+    screen: MyTrees,
+  },
+  Animation : {
+    screen: Animation,
+  },
+  ScanList : {
+    screen: ScanList,
+  },
+  WaterList : {
+    screen: WaterList,
+  },
   RegisterPlant : {
     screen : RegisterPlant,
   }
 });
 
-// const AppContainer = createAppContainer(AppNavigator);
 
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
