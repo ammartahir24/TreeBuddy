@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 let database = firebase.firestore();
 let auth = firebase.auth()
 
-const image2base64 = require('image-to-base64');
+// const image2base64 = require('image-to-base64');
 
 async function imgTob64 (image_source){
 
@@ -404,6 +404,23 @@ async function IncrementSpecie(Specie_ID){
 }
 
 
+async function updateLatLong(){
+  let snapshot= await database.collection('plants').get()
+    .then(snap=>{
+      if(snap.empty){
+        return "error"
+      }
+      else{
+        snap.forEach(function(doc){
+          // console.log(doc.data())
+
+          database.collection('plants').doc(doc.id).update({Location: {latitude: doc.data().Location.Latitude, longitude: doc.data().Location.Longitude}})
+        });
+      }
+    })
+}
+
+
 async function IncrementPlantOnPerson(User_ID){
   let count;
   let snapshot = await database.collection("users").where("User_ID",'==',User_ID).get()
@@ -535,7 +552,7 @@ let tree_info = {
 }
 
 
-Add_Tree_Details(tree_info)
+// Add_Tree_Details(tree_info)
 
 ///////////////// Add specie ///////////////////
 
@@ -578,5 +595,5 @@ async function CreateSpecie(specie_prof){
  // })
 
 }
-
+updateLatLong()
 // CreateSpecie(specie_prof)

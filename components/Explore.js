@@ -3,6 +3,7 @@ import { AppRegistry, StyleSheet, Dimensions, View,  Container, Text, Image, Tou
 import { TabNavigator } from "react-navigation";
 import MapView from 'react-native-maps'
 import Icon from 'react-native-vector-icons/Ionicons';
+import {getSinglePlant, getAllPlants, getPlantFromSPID} from "../firebase_integeration/databasefunctions"
 
 
 export default class Explore extends React.Component {
@@ -14,8 +15,8 @@ export default class Explore extends React.Component {
       longitude: 74.3587,
       error:null,
       markers:[
-                {T_ID: 1, location: {latitude: 31.471728, longitude: 74.410013}},
-                {T_ID: 2, location: {latitude: 31.471817, longitude: 74.410567}},
+                {T_ID: 1, Location: {latitude: 31.471728, longitude: 74.410013}},
+                {T_ID: 2, Location: {latitude: 31.471817, longitude: 74.410567}},
               ]
 
     };
@@ -42,17 +43,25 @@ export default class Explore extends React.Component {
     );
 
     if(this.props.navigation.state.ID == undefined){
-      this.getMarkers(-1);
+      getAllPlants()
+      .then(res=> {
+        console.log("Get All", res)
+        this.setState({markers: res})
+      })
+      
     }
-    else{
-      this.getMarkers(this.props.navigation.state.ID);
-    }
+    // else{
+    //   console.log("Get Species" , this.props.navigation.state.params.ID)
+    //   let Plants = await getPlantFromSPID(this.props.navigation.state.params.ID)
+    //   console.log(Plants)
+    // }
 
   }
 
-  getMarkers = (treesToShow) => { //get all markers needed from the DB and update state. 
-      console.log(treesToShow)
-  }
+  // getMarkers = (treesToShow) => { //get all markers needed from the DB and update state. 
+  //     console.log(treesToShow)
+  // }
+
 
   onMarkerPress = (e, loc) => { 
     this.props.navigation.navigate('PlantDetails', {location: loc})
@@ -88,7 +97,7 @@ export default class Explore extends React.Component {
         loadingEnabled = {true}
       >
         {this.state.markers.map((marker,i) => (
-          <MapView.Marker coordinate={marker.location} key = {i} onPress = {(e) => {this.onMarkerPress(e,marker.location)}}>
+          <MapView.Marker coordinate={marker.Location} key = {i} onPress = {(e) => {this.onMarkerPress(e,marker.location)}}>
             <Image source={require('../tree_marker.png')} style={{width:20, height:17}} />
             
           </MapView.Marker>

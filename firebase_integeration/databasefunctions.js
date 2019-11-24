@@ -202,6 +202,7 @@ async function getSinglePlant(plant_name)
 }
 
 
+
 async function getPlants(plant_name){
 
   let plants_data;
@@ -297,6 +298,40 @@ async function getSpecieFunc (input){
   }
   // console.log(specie_data)
 }
+
+async function getPlantFromSPID(SP_ID)
+{
+  var start = new Date();
+  let data;
+  let snapshot = await db.collection('plants').where('Specie_ID', '==',SP_ID).get()
+    .then(snap => {
+      // console.log(snap)
+      if (snap.empty) {
+              console.log('query failed')
+              data = "QueryFailure"
+              return data
+
+          }
+          else
+          {
+              console.log("query completed in:" , new Date() - start)
+              const data_fetched = snap.docs.map(doc => doc.data());
+              data = data_fetched
+              // console.log(data);
+
+              return data
+              
+          }
+
+    })
+    .catch(function(error) {
+      console.error("Error getting: ", error);
+  });
+
+    return data;
+
+}
+
 
 
 ////////////////////// Adding Plant Details ////////////////////////
@@ -563,4 +598,5 @@ export {
     getSpecieNameFromSPid,
     Confirm_UniqueID,
     getRndInteger,
+    getPlantFromSPID,
 };
