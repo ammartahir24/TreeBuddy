@@ -7,6 +7,7 @@ import SignUp from './components/SignUp'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
+import SplashScreen from './components/SplashScreen.js'
 // import Camera from './components/CameraComponent'
 import PlantDetails from './components/PlantDetails'
 import MyTrees from './components/MyTrees'
@@ -29,16 +30,14 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-const AuthenticationStack = createStackNavigator({
-  LogIn : {
-    screen: HomeScreen,
-  },
-  SignUp : {
-    screen : SignUp,
-  },
-})
 
 const AppNavigator = createStackNavigator({
+  SplashScreen: {
+    screen: SplashScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
   Home: {
     screen: HomeScreen,
   },
@@ -91,13 +90,8 @@ const MyDrawerNavigator = createDrawerNavigator({
 });
 
 
-const switchnav = createSwitchNavigator({
-  Auth : AuthenticationStack,
-  App: MyDrawerNavigator,
-})
-
 // const MyApp = createAppContainer(MyDrawerNavigator);
-const MyApp = createAppContainer(switchnav);
+const MyApp = createAppContainer(MyDrawerNavigator);
 
 export default class App extends React.Component {
   render() {

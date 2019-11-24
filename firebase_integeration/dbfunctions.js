@@ -1,6 +1,6 @@
 import {auth, db, firebase} from './config';
 
-// const image2base64 = require('image-to-base64');
+const image2base64 = require('image-to-base64');
 
 async function is_valid_user(email, password) {
     let isValid = true;

@@ -139,6 +139,10 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-permissions')
+    implementation project(':react-native-camera')
+    implementation project(':react-native-view-shot')
+    implementation project(':react-native-svg')
 <<<<<<< HEAD
     implementation project(':react-native-date-picker')
 =======

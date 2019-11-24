@@ -1,154 +1,75 @@
-import {auth, db, firebase} from './config';
+const firebase = require('firebase');
+const axios = require('axios');
 
-// const image2base64 = require('image-to-base64');
+const firebaseConfig = {
+  apiKey: "AIzaSyBmlyixNdwtyOE09HS5nMDAoiJ62VCaLEY",
+  authDomain: "treebuddy123.firebaseapp.com",
+  databaseURL: "https://treebuddy123.firebaseio.com",
+  projectId: "treebuddy123",
+  storageBucket: "treebuddy123.appspot.com",
+  messagingSenderId: "352354846644",
+  appId: "1:352354846644:web:ad742e8a277ea7f13554e1"
+};
 
-async function is_valid_user(email, password) {
-    let isValid = true;
-    await auth.signInWithEmailAndPassword(email, password).catch((err) => {
-        isValid = false;
-    });
-    if(isValid){
-        console.log("SahiKamBro")
-        console.log("valid user")
-    }
-    else
-    {
-        // return false;
-        console.log("GhaltKamBro")
-        console.log("invalid user")
+firebase.initializeApp(firebaseConfig);
+let database = firebase.firestore();
+let auth = firebase.auth()
 
-    }
-    return isValid;
+const image2base64 = require('image-to-base64');
+
+async function imgTob64 (image_source){
 
 }
-async function signin (email, pass){
-    console.log("verifying the user")
-    let verify = await is_valid_user(email, pass);
-    
-    console.log(verify)
-    if(verify){
-        return "true";
-    }
-    else
-    {
-        return "false";
-    }
-    // return verify;
-}
 
-async function get_user(userID) {
-    console.log("get user")
-    let snapshot = null
+// uploadImage = async (uri, imageName) => {
+//       const response = await fetch(uri)
+//       const blob = await response.blob()
+
+//       var ref = await firebase.storage().ref().child("users/" + imageName)
+//       return ref.put(blob)
+//     }
+
+// var res = uploadImage('./images.jpeg', "LoverBoix")
+// console.log(res)
+
+
+
+async function getAllItems(){
+
     var start = new Date();
-    let poridb = db.collection('users')
 
-    console.log(poridb)
+    let snapshot = await database.collection('users').where('Email', '==', '20100108@lums.edu.pk').get()
+      .then(snap => {
+        // console.log(snap)
+        if (snap.empty) {
+                console.log('query failed')
+            }
+            else
+            {
+                console.log("query completed in:" , new Date() - start)
+                const data = snap.docs.map(doc => doc.data());
+                console.log(data[0]['Rating']);
+            }
 
-    // db.collection('users').where("Email",'==',userID).get()
-    // .then(snap => {
-    //         if (snap.empty) {
-    //             console.log('query failed')
-    //             return null;
-    //         }
-    //         else
-    //         {
-    //             console.log("query completed in:" , new Date() - start)
-    //             const data = snap.docs.map(doc => {
-    //                 let obj = doc.data()
-    //                 obj['key'] = doc.id
-    //                 return obj
-    //             });
-    //             snapshot = data[0];
-    //         }
-    //     })
-    // if (snapshot === null) {
-    //     return null;
-    // } else {
-    //     return snapshot;
-    // }
+      })
+      .catch(function(error) {
+        console.error("Error getting: ", error);
+    });
+
+    // const snapshot = await db.collection('users').get()
+    // console.log(snapshot)
 }
- async function check_user_existence(user_Email)
- {
-    console.log("Checking if the user exists: ", user_Email);
-    let snapshot = null
-    await db.collection('users').where("Email", '==', user_Email).get()
-    .then(snap =>{
-        if(snap.empty)
-        {
-            console.log("Query failed")
-        }
-        else
-        {
-            console.log("Query for checking user's existence completed")
-            console.log(snap)
-
-        }
-    })
-
-    // if(snapshot === null)
-    // {
-    //     console.log("empty snapshot")
-    //     console.log(snapshot)
-    // }
-    // else
-    // {
-    //     console.log("snapshot not empty")
-    //     console.log(snapshot)
-
-    // }
-
-    return "back from user existence";
- }
-
-async function create_user(info) {
-    if (info === undefined)
-        return -1;
-
-    let existence_response = await check_user_existence(info['Email'])
-    console.log(existence_response)
-
-    // let userProfile = {
-    //     Name: info['Name'] || "",
-    //     Email: info['Email'],
-    //     Trees: info['Trees'] || 0,
-    //     Rating : info['Rating'] || 0,
-    //     Age : info['Age'] 
-        
-    // };
-
-    // console.log("in db func")
-    // console.log(userProfile)
-
-    // let unique_id = info['Email'];
-
-    // let snapshot = await get_user(unique_id);
-    // console.log("snapshot",  snapshot)
-    //let strRef = stor.ref();
-
-    //strRef.putString("abc");
-    // console.log("check getuser:", snapshot)
-    // if (snapshot != null) { // User already exists no need to create account
-    //     console.log("User already exists, not making an account");
-    //     return 1;
-    // }
-
-    // await db.collection('users').add(userProfile)
-    // await auth.createUserWithEmailAndPassword(info['Email'], info['Password']);
-    // console.log("user created")
-    // return 0
-}
-
 
 async function getAllPlants()
 {
   var start = new Date();
   let data;
-  let snapshot = await db.collection('plants').get()
+  let snapshot = await database.collection('plants').get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
               console.log('query failed')
-              return "QueryFailure"
+              return "QueryFailure";
           }
           else
           {
@@ -173,12 +94,12 @@ async function getSinglePlant(plant_name)
 {
   var start = new Date();
   let data;
-  let snapshot = await db.collection('plants').where('Name', '==',plant_name).get()
+  let snapshot = await database.collection('plants').where('Name', '==',plant_name).get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
               console.log('query failed')
-              return "QueryFailure"
+              return "QueryFailure";
 
           }
           else
@@ -208,22 +129,74 @@ async function getPlants(plant_name){
   if(plant_name == "All"){
     plants_data = await getAllPlants()
     console.log(plants_data)
-    return plants_data
   }
   else
   {
     plants_data = await getSinglePlant(plant_name)
     console.log(plants_data)
-    return plants_data
 
   }
 }
 
 
+// getPlants("Mangoo")
+// getSinglePlant('Mangoo')
+
+let user_profile = {
+  Email : "mhasan3322@gmail.com",
+  Name : "Hassan",
+  Rating: 0,
+  Rewards: 
+  {
+    plant_1_tree: 0,
+    plant_5_tree: 0,
+    plant_10_tree: 0,
+    scan_1_tree:0,
+    scan_5_tree:0,
+    scan_10_tree:0,
+    water_1_tree:0,
+    water_5_tree:0,
+    water_10_tree:0
+  }
+  ,
+  Tree:[]
+}
+
+
+
+
+async function create_user(user_prof) {
+    if (user_prof === undefined) {
+        return;
+    }
+    // let unique_id = db.ref().child('groups').push().key;
+    // let itemData = {
+    //     Category: info['Category'],
+    //     Name: info['Name'],
+    //     Price: info['Price'],
+    // };
+    let obj = await database.collection('users').add(user_prof)
+      .then(snap =>
+      {
+        if(snap.empty){
+          console.log("null")
+          return null
+        }
+        else{
+          console.log(snap)
+          return snap
+        }
+      })
+    // itemData['key'] = obj.id;
+    return "done";
+}
+
+
+
 async function get_AllSpecies (){
   var start = new Date();
   let data;
-  let snapshot = await db.collection('species').get()
+  let snapshot = await database.collection('species').get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
@@ -253,7 +226,7 @@ async function get_AllSpecies (){
 async function getSingleSpecie(specie_name){
   var start = new Date();
   let data;
-  let snapshot = await db.collection('species').where("Specie_Name",'==', specie_name).get()
+  let snapshot = await database.collection('species').where("Specie_Name",'==', specie_name).get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
@@ -298,8 +271,10 @@ async function getSpecieFunc (input){
   // console.log(specie_data)
 }
 
+// getSpecieFunc("Mango Specie")
 
-////////////////////// Adding Plant Details ////////////////////////
+
+/////////////////////////// // // // Add plant details // // // /////////////
 
 
 async function getRndInteger(min, max) {
@@ -310,7 +285,7 @@ async function Confirm_UniqueID(table_name, ID_name,ID_value){
 
   var start = new Date();
   let data;
-  let snapshot = await db.collection(table_name).where(ID_name,'==', ID_value).get()
+  let snapshot = await database.collection(table_name).where(ID_name,'==', ID_value).get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
@@ -345,7 +320,7 @@ async function getSpecieNameFromSPid(Specie_ID){
 
   var start = new Date();
   let data;
-  let snapshot = await db.collection("species").where("Specie_ID",'==',Specie_ID).get()
+  let snapshot = await database.collection("species").where("Specie_ID",'==',Specie_ID).get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
@@ -384,7 +359,7 @@ async function getSpecieNameFromSPid(Specie_ID){
 
 async function IncrementSpecie(Specie_ID){
   let count;
-  let snapshot = await db.collection("species").where("Specie_ID",'==',Specie_ID).get()
+  let snapshot = await database.collection("species").where("Specie_ID",'==',Specie_ID).get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
@@ -415,14 +390,14 @@ async function IncrementSpecie(Specie_ID){
   //     Occurences: count + 1
   //   })
 
-  db.collection("species").where("Specie_ID", "==", Specie_ID)
+  database.collection("species").where("Specie_ID", "==", Specie_ID)
   .get()
   .then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
           console.log(doc.id, " => ", doc.data());
                     
           // Build doc ref from doc.id
-          db.collection("species").doc(doc.id).update({Occurences: count +1 });
+          database.collection("species").doc(doc.id).update({Occurences: count +1 });
       });
  })
 
@@ -431,7 +406,7 @@ async function IncrementSpecie(Specie_ID){
 
 async function IncrementPlantOnPerson(User_ID){
   let count;
-  let snapshot = await db.collection("users").where("User_ID",'==',User_ID).get()
+  let snapshot = await database.collection("users").where("User_ID",'==',User_ID).get()
     .then(snap => {
       // console.log(snap)
       if (snap.empty) {
@@ -462,14 +437,15 @@ async function IncrementPlantOnPerson(User_ID){
   //     Occurences: count + 1
   //   })
 
-  db.collection("species").where("User_ID", "==", User_ID)
+  database.collection("species").where("User_ID", "==", User_ID)
   .get()
   .then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
-          console.log(doc.id, " => ", doc.data());
+          // console.log(doc.id, " => ", doc.data());
+          console.log("Tree count: ", count)
                     
           // Build doc ref from doc.id
-          db.collection("users").doc(doc.id).update({Tree: count +1 });
+          database.collection("users").doc(doc.id).update({Tree: count +1 });
       });
  })
 
@@ -507,7 +483,7 @@ async function Add_Tree_Details (tree_info){
   
   let tree_item = {
       Location: tree_info['Location'],
-      image : tree_info['Picture'],
+      Image : tree_info['Picture'],
       Name : tree_info['Name'],
       Plant_ID : unique_id,
       Planter_ID: tree_info['Planter_ID'],
@@ -521,7 +497,7 @@ async function Add_Tree_Details (tree_info){
 
   // console.log("here")
 
-  let obj = await db.collection('plants').add(tree_item)
+  let obj = await database.collection('plants').add(tree_item)
     .then(snap =>
     {
       if(snap.empty){
@@ -543,24 +519,64 @@ async function Add_Tree_Details (tree_info){
 
 }
 
+let tree_info = {
+  Name : "Treever",
+  Planter_ID : 2,
+  Planter_Name : "Hamza" ,
+  Specie_ID: 11,
+
+  Location: 
+  {
+    lat: 31.471399,
+    long: 74.411191,
+  }
+  ,
+  Picture: "https://images-na.ssl-images-amazon.com/images/I/61unKaYGOsL.jpg"
+}
 
 
-////////////////////////////////////////////////////////////////////
+Add_Tree_Details(tree_info)
 
+///////////////// Add specie ///////////////////
 
-export {
-    signin,
-    create_user,
-    getPlants,
-    getSinglePlant,
-    getAllPlants,
-    getSpecieFunc,
-    getSingleSpecie,
-    get_AllSpecies,
-    Add_Tree_Details,
-    IncrementSpecie,
-    IncrementPlantOnPerson,
-    getSpecieNameFromSPid,
-    Confirm_UniqueID,
-    getRndInteger,
-};
+let specie_prof = {
+  Family: "Fabaceae",
+  Order: "Fabales",
+  Image: "",
+  Kingdome: "Plantae",
+  Occurences: 0,
+  Specie_ID: 11,
+  Specie_Name: "Rosewood",
+  Specie_bioName: "Dalbergia",
+
+}
+
+async function CreateSpecie(specie_prof){
+
+    let obj = await database.collection('species').add(specie_prof)
+    .then(snap =>
+    {
+      if(snap.empty){
+        console.log("null")
+        return null
+      }
+      else{
+        console.log("done with query")
+        // console.log(snap)
+        return snap
+      }
+    })
+ //    database.collection("species").where("Specie_ID", "==", Specie_ID)
+ //  .get()
+ //  .then(function(querySnapshot) {
+ //      querySnapshot.forEach(function(doc) {
+ //          console.log(doc.id, " => ", doc.data());
+                    
+ //          // Build doc ref from doc.id
+ //          database.collection("species").doc(doc.id).update({Order: "Sapindales" });
+ //      });
+ // })
+
+}
+
+// CreateSpecie(specie_prof)
