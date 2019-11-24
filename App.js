@@ -32,14 +32,14 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-const AuthenticationStack = createStackNavigator({
-  LogIn : {
-    screen: HomeScreen,
-  },
-  SignUp : {
-    screen : SignUp,
-  },
-})
+// const AuthenticationStack = createStackNavigator({
+//   LogIn : {
+//     screen: HomeScreen,
+//   },
+//   SignUp : {
+//     screen : SignUp,
+//   },
+// })
 
 const AppNavigator = createStackNavigator({
   Home: {
@@ -94,13 +94,13 @@ const MyDrawerNavigator = createDrawerNavigator({
 });
 
 
-const switchnav = createSwitchNavigator({
-  Auth : AuthenticationStack,
-  App: MyDrawerNavigator,
-})
+// const switchnav = createSwitchNavigator({
+//   Auth : AuthenticationStack,
+//   App: MyDrawerNavigator,
+// })
 
 // const MyApp = createAppContainer(MyDrawerNavigator);
-const MyApp = createAppContainer(switchnav);
+const MyApp = createAppContainer(MyDrawerNavigator);
 
 console.disableYellowBox = true;
 

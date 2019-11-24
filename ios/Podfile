@@ -43,4 +43,8 @@ target 'TreeBuddy' do
 
   pod 'react-native-view-shot', :path => '../node_modules/react-native-view-shot'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
 end

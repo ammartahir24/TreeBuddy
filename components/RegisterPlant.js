@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   DatePickerAndroid,
   CameraRoll,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { TextInput, Button, Headline} from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
@@ -19,6 +20,7 @@ import Modal, { ModalContent } from 'react-native-modal';
 import QRCode from 'react-native-qrcode';
 import ViewShot from "react-native-view-shot";
 // import { Dropdown } from 'react-native-material-dropdown';
+// import QRCodeScanner from 'react-native-qrcode-scanner';
 
 
 export default class RegisterPlant extends React.Component{
@@ -58,9 +60,19 @@ export default class RegisterPlant extends React.Component{
 		  }
 	  };
 
-  static navigationOptions = {
-	title: 'Add a Tree',
-  };
+	  static navigationOptions = ({navigation}) => ({
+		headerLeft: (
+		  <TouchableWithoutFeedback onPress={() => navigation.goBack()} >
+			<Icon name="md-arrow-round-back"  style={{ marginTop: 10, marginLeft: 10}} size={32} color="#eedede" />
+		  </TouchableWithoutFeedback>
+		),
+		headerStyle: {
+			backgroundColor: '#00695c',
+		},
+		title:"Add a tree",
+		headerTintColor:"#eedede",
+	  });
+	
 
   async componentDidMount() {
 	if (Platform.OS === 'android' && !Constants.isDevice) {

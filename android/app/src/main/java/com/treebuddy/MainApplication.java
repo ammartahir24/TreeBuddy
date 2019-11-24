@@ -3,6 +3,8 @@ package com.treebuddy;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
+import org.reactnative.camera.RNCameraPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import com.horcrux.svg.SvgPackage;
 <<<<<<< HEAD
@@ -49,6 +51,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNPermissionsPackage(),
+            new RNCameraPackage(),
             new RNViewShotPackage(),
             new SvgPackage(),
 <<<<<<< HEAD
