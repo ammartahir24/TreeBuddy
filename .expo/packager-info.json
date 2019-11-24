@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 19992,
-  "expoServerNgrokUrl": "https://tp-v64.anonymous.treebuddy.exp.direct",
-  "packagerNgrokUrl": "https://packager.tp-v64.anonymous.treebuddy.exp.direct",
-  "ngrokPid": 20320,
+  "packagerPid": 22132,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }
