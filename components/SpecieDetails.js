@@ -24,13 +24,17 @@ export default class PlantDetails extends React.Component {
   }
 
   componentDidMount(){
-    // console.log("Details ", this.props.location, this.props, this.props.navigation.state.params)
-    // this.setState({location:  {
-    //                             latitude: this.props.navigation.state.params.location.latitude, 
-    //                             longitude: this.props.navigation.state.params.location.longitude,
-    //                           } })
-
-    //get rest of information from DB and set state.
+    if(this.props.navigation.state.params.path == "HomeScreen"){
+      this.setState({SP_name: this.props.navigation.state.params.SP_name,
+        SP_Bioname:  this.props.navigation.state.params.SP_Bioname,
+        Kingdom: this.props.navigation.state.params.Kingdom,
+        Family: this.props.navigation.state.params.Family,
+        Order: this.props.navigation.state.params.Order
+    })
+  }
+  else{
+      this.setState({path: "scanned"})
+  }
 
   }
 
