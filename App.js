@@ -70,6 +70,9 @@ const AppNavigator = createStackNavigator({
   },
   RegisterPlant : {
     screen : RegisterPlant,
+  },
+  Rewards : {
+    screen : Rewards,
   }
 });
 
@@ -86,6 +89,9 @@ const MyDrawerNavigator = createDrawerNavigator({
   },
   Settings : {
     screen : Settings,
+  },
+  Rewards : {
+    screen : Rewards,
   },
 });
 
