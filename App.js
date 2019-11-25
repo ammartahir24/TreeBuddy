@@ -18,19 +18,33 @@ import ScanList from './components/ScanList'
 import WaterList from './components/WaterList'
 import RegisterPlant from "./components/RegisterPlant"
 import SpecieDetails from './components/SpecieDetails'
-import {createDrawerNavigator} from "react-navigation-drawer";
+import {createDrawerNavigator, DrawerItems} from "react-navigation-drawer";
 import Rewards from './components/Rewards'
+import qrScanner from './components/qrScanner'
+import test from './components/test'
+// import {SafeAreaView, ScrollView, Image, View, Text, Alert} from 'react-native';
+import { Avatar } from 'react-native-paper';
 
+import {Dimensions} from 'react-native';
 import {
   StyleSheet,
   Button,
   View,
-  SafeAreaView, 
+  SafeAreaView,
+  ScrollView, 
   Text,
   Alert,
   TouchableWithoutFeedback,
   TouchableHighlight,
 } from 'react-native';
+
+var width = Dimensions.get('window').width;
+var height = Dimensions.get('window').height;
+
+global.values = {
+	name : "Hassan",
+	user : "User-1"
+}
 
 // const AuthenticationStack = createStackNavigator({
 //   LogIn : {
@@ -40,6 +54,59 @@ import {
 //     screen : SignUp,
 //   },
 // })
+
+const CustomeDrawerComponent = (props) => (
+	<SafeAreaView style = {{flex: 1, height:"100%", backgroundColor:"#eedede"}}>
+		<View style={{padding: 10, paddingTop: 0.05*height, paddingBottom: 0.05*height, backgroundColor:"#00695c"}}>
+      <View style={{paddingLeft:"22%"}}>
+        <Avatar.Image  size={150} source={require('./hassan.jpeg')} />
+      </View>
+			 <Text style={{marginLeft: 0.01*height, marginTop: 20, fontWeight: 'bold', color:"#eedede"}}> {values.name} </Text>
+			 <Text style={{marginLeft: 0.01*height, marginTop: 8, color:"#eedede"}}> Member ID: {values.user} </Text>
+		</View>
+		<ScrollView>
+		<View style={{height:"5%"}}></View>
+    <View style={{height: "100%", width: "100%", backgroundColor:"#eedede"}}>
+      <DrawerItems {...props} 
+        // onItemPress={(route) => {
+        // 	console.log(route)
+        // 	if (route.route.routeName !== "Logout") {
+        // 	  	props.onItemPress(route);
+        // 	  	return;
+        // 	}
+        // 	Alert.alert(
+        // 		'Are you sure you want to logout?',
+        // 		'',
+        // 		[
+        // 			{
+        // 				text: 'Cancel',
+        // 				style: 'cancel',
+        // 		  	},
+        // 		  {
+        // 				text: 'Logout', 
+        // 				onPress: () => {
+        // 					AsyncStorage.clear();
+        // 					nav2.dispatch(StackActions.reset({
+        // 						index: 0,
+        // 						actions: [
+        // 							NavigationActions.navigate({
+        // 								routeName: 'Login',
+        // 							}),
+        // 						],
+        // 					}))
+        // 				}
+        // 		  },
+        // 		],
+        // 	);
+        // }}
+      />
+    </View>
+    
+		</ScrollView>
+	</SafeAreaView>
+)
+
+
 
 const AppNavigator = createStackNavigator({
   Home: {
@@ -74,6 +141,12 @@ const AppNavigator = createStackNavigator({
   },
   RegisterPlant : {
     screen : RegisterPlant,
+  },
+  test: {
+    screen : test,
+  },
+  Rewards : {
+    screen : Rewards
   }
 });
 
@@ -85,12 +158,20 @@ const MyDrawerNavigator = createDrawerNavigator({
   Explore : {
     screen: Explore,
   },
-  Profile : {
-    screen: Profile,
+  Rewards : {
+    screen: Rewards,
   },
-  Settings : {
-    screen : Settings,
-  },
+},{
+  contentComponent: CustomeDrawerComponent,
+  contentOptions:{
+    labelStyle: {
+      fontWeight: 'normal',
+    },
+    activeTintColor: '#eedede',
+    activeBackgroundColor: '#00695c',
+    inactiveBackgroundColor: '#eedede',
+    backgroundColor: "eedede"
+  }
 });
 
 
