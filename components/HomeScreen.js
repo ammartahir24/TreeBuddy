@@ -247,7 +247,7 @@ export default class HomeScreen extends React.Component {
           </View> 
 
           {/* Search code */}
-          <View style={{borderRadius:10,flexGrow:1,width:"100%", height:70*numResults, position:"absolute",top:0, backgroundColor:"transparent"}}>
+          <View style={{borderRadius:10,flexGrow:1,width:"100%", height:91*numResults, position:"absolute",top:0, backgroundColor:"transparent"}}>
               <ScrollView>
                 {
                   this.state.matches.map((item,index) => {
