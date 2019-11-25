@@ -164,7 +164,7 @@ export default class HomeScreen extends React.Component {
   }
 
   updateSearch = search => {
-    this.state.matches = this.state.searchlist.filter(match => (search.toLowerCase().includes(match.Family.toLowerCase()) || match.Family.toLowerCase().includes(search.toLowerCase())));
+    this.state.matches = this.state.searchlist.filter(match => (search.toLowerCase().includes(match.Specie_Name.toLowerCase()) || match.Specie_Name.toLowerCase().includes(search.toLowerCase())));
     this.setState({search});
   }
 
