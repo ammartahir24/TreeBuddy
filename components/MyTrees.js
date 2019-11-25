@@ -67,12 +67,12 @@ export default class PlantDetails extends React.Component {
       return (
           
           <View style={{ flex:1,width:"100%", height:"100%",marginTop:0, backgroundColor:"#eedede"}}>
-            <ScrollView persistentScrollbar = {true} style = {{flex: 1, width: '97%', height: '55%', alignSelf: 'center',marginTop: 15}}>
+            <ScrollView persistentScrollbar = {true} style = {{flex: 1, width: '99%', height: '55%', alignSelf: 'center',marginTop: 15}}>
               {
                 this.state.mytreelist.map((item,index) => {
                   return(
                   <TouchableOpacity underlayColor="#439889" key = {index} onPress={(e) =>{this.props.navigation.navigate("Animation", {path: "MyTrees", name: item.name, spname: item.spname, lastwatered: item.lastwatered, datePlanted: '22-11-2019'})}} 
-                                    style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 70, marginBottom: 15}}
+                                    style={{elevation:5, alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 35, marginBottom: 5}}
                   >
                     <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1}}/>
                     <View style={{flex:1, flexDirection:'column', paddingTop:5}}>
@@ -91,7 +91,7 @@ export default class PlantDetails extends React.Component {
                 this.state.mytreelist.map((item,index) => {
                   return(
                   <TouchableOpacity underlayColor="#439889" key = {index} onPress={(e) =>{this.props.navigation.navigate("Animation", {path: "MyTrees", name: item.name, spname: item.spname, lastwatered: item.lastwatered})}} 
-                                    style={{alignSelf: 'center',width: "95%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 70, marginTop: 15}}
+                                    style={{elevation:5,alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 35, marginBottom: 5}}
                   >
                     <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1}}/>
                     <View style={{flex:1, flexDirection:'column', paddingTop:5}}>

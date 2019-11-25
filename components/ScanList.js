@@ -60,12 +60,12 @@ export default class HomeScreen extends React.Component {
         const {navigate} = this.props.navigation;
         return (
           <View style={{ flex:1,width:"100%", height:"100%",marginTop:0, backgroundColor:"#eedede"}}>
-            <ScrollView style = {{flex: 1, width: '97%', height: '55%', alignSelf: 'center',marginTop: 15}}>
+            <ScrollView style = {{flex: 1, width: '99%', height: '55%', alignSelf: 'center',marginTop: 5}}>
               {
                 this.state.scanlist.map((item,index) => {
                   return(
-                  <View key = {index} style={{backgroundColor:"#00695c",borderColor:"#00695c",flex:1, flexDirection:'row',opacity:5,borderRadius:70, marginBottom: 15,borderWidth:1,paddingTop:5, paddingBottom:5, paddingLeft:5}}>
-                    <Image source = {{uri:item.img}} style={{borderRadius:150/4,borderColor:"#eedede" ,width: 80, height: 80, overflow: "hidden", borderWidth: 1}}/>
+                  <View key = {index} style={{backgroundColor:"#00695c",borderColor:"#00695c",flex:1, flexDirection:'row',opacity:5,borderRadius:35, marginBottom: 3,borderWidth:1,paddingTop:5, paddingLeft:5}}>
+                    <Image source = {{uri:item.img}} style={{borderRadius:150/4,borderColor:"#eedede" ,width: 80, height: 80, overflow: "hidden", borderWidth: 1, marginBottom:5}}/>
                       <Text style={{color:"#eedede",fontSize:20,textAlignVertical: "center",marginLeft:15}}>{item.name}</Text>
                   </View>
                   )

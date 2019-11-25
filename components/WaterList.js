@@ -49,28 +49,26 @@ export default class PlantDetails extends React.Component {
     static navigationOptions = ({navigation}) => ({
           headerLeft: (
             <TouchableWithoutFeedback onPress={() => navigation.goBack()} >
-              <Icon name="md-arrow-round-back"  style={{ marginTop: 10, marginLeft: 10}} size={32} color="#FFFFFF" />
+              <Icon name="md-arrow-round-back"  style={{ marginTop: 10, marginLeft: 10}} size={32} color="#eedede" />
             </TouchableWithoutFeedback>
           ),
           headerStyle: {
               backgroundColor: '#00695c',
           },
           title:"Water your trees",
-          headerTintColor:"white",
+          headerTintColor:"#eedede",
         });
       render() {
         const {navigate} = this.props.navigation;
         return (
           <View style={{ flex:1,width:"100%", height:"100%",marginTop:0, backgroundColor:"#eedede"}}>
-            <ScrollView persistentScrollbar = {true} style = {{flex: 1, width: '97%', height: '55%', alignSelf: 'center',marginTop: 15}}>
+            <ScrollView persistentScrollbar = {true} style = {{flex: 1, width: '97%', height: '55%', alignSelf: 'center',marginTop: 5}}>
               {
                 this.state.mytreelist.map((item,index) => {
                   return(
-                  <TouchableOpacity underlayColor="#439889" key = {index} onPress={(e) =>{this.props.navigation.navigate("Animation", {path: "MyTrees", name: item.name, spname: item.spname, lastwatered: item.lastwatered})}} 
-                                    style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 70, marginBottom: 15}}
-                  >
-                    <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1}}/>
-                    <View style={{flex:5, flexDirection:'column', paddingTop:5}}>
+                    <View underlayColor="#439889" key = {index} style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',paddingTop:2, paddingBottom:2, paddingLeft:5, borderRadius: 2, marginBottom: 5}}>
+                    <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1, margin:3}}/>
+                    <View style={{flex:5, flexDirection:'column', margin:5}}>
                       <Text style={{color:"#eedede",height:"37%",fontSize:19,textAlignVertical: "center",marginLeft:15}}>{item.name}</Text>
                       <Text style={{color:"#eedede",height:"30%",fontSize:15,textAlignVertical: "center",marginLeft:15}}>{item.spname}</Text>
                       <View style={{height:"12%", backgroundColor: "transparent"}}></View>
@@ -83,11 +81,11 @@ export default class PlantDetails extends React.Component {
                               console.log(this.state.mytreelist[index].lastwatered)
                               this.setState({st:''})
                             }
-                          } style={{width:70, height:40, backgroundColor:"#e1eff7", borderRadius:2}}>
+                          } style={{width:70, height:40, backgroundColor:"#e1eff7", borderRadius:2 , elevation:5}}>
                             <Text style={{color:"#00695c",fontSize:13,textAlign:"center",marginTop:10}}>Water Now</Text>
                           </TouchableHighlight>
                         </View>
-                  </TouchableOpacity>
+                  </View>
                   )
                 })
               }
@@ -97,11 +95,9 @@ export default class PlantDetails extends React.Component {
               {
                 this.state.mytreelist.map((item,index) => {
                   return(
-                  <TouchableOpacity underlayColor="#439889" key = {index} onPress={(e) =>{this.props.navigation.navigate("Animation", {path: "MyTrees", name: item.name, spname: item.spname, lastwatered: item.lastwatered})}} 
-                                    style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 70, marginBottom: 15}}
-                  >
-                    <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1}}/>
-                    <View style={{flex:5, flexDirection:'column', paddingTop:5}}>
+                  <View underlayColor="#439889" key = {index} style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',paddingTop:2, paddingBottom:2, paddingLeft:5, borderRadius: 0, marginBottom: 5}}>
+                    <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1 , margin:3}}/>
+                    <View style={{flex:5, flexDirection:'column', margin:5}}>
                       <Text style={{color:"#eedede",height:"37%",fontSize:19,textAlignVertical: "center",marginLeft:15}}>{item.name}</Text>
                       <Text style={{color:"#eedede",height:"30%",fontSize:15,textAlignVertical: "center",marginLeft:15}}>{item.spname}</Text>
                       <View style={{height:"12%", backgroundColor: "transparent"}}></View>
@@ -118,7 +114,7 @@ export default class PlantDetails extends React.Component {
                             <Text style={{color:"#00695c",fontSize:13,textAlign:"center",marginTop:10}}>Water Now</Text>
                           </TouchableHighlight>
                         </View>
-                  </TouchableOpacity>
+                  </View>
                   )
                 })
               }

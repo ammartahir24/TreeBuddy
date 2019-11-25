@@ -203,10 +203,12 @@ export default class HomeScreen extends React.Component {
                 {
                   this.state.matches.map((item,index) => {
                     return(
-                    <View key = {index} style={{ borderColor:"#00695c",flex:1, flexDirection:'row',opacity:5,borderRadius:5,borderWidth:1,paddingTop:20, paddingBottom:20, paddingLeft:5, backgroundColor:"#eedede"}}>
+                    <TouchableOpacity key = {index} onPress={(e)=>{
+                      this.props.navigation.navigate("SpecieDetails")
+                    }} style={{ borderColor:"#00695c",flex:1, flexDirection:'row',opacity:5,borderRadius:5,borderWidth:1,paddingTop:20, paddingBottom:20, paddingLeft:5, backgroundColor:"#eedede",}}>
                       <Image source = {{uri:item.img}} style={{borderColor:"#00695c" ,width: 50, height: 50, borderRadius: 150 / 2, overflow: "hidden", borderWidth: 3}}/>
                       <Text style={{color:"#00695c",fontSize:20,textAlignVertical: "center",marginLeft:15}}>{item.name}</Text>
-                    </View>
+                    </TouchableOpacity>
                     )
                   })
                 }
