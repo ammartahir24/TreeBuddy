@@ -7,9 +7,7 @@ import SignUp from './components/SignUp'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import Settings from './components/Settings'
-import Camera from './components/CameraComponent'
-// import AddTree from './components/AddTree'
-import QRcode from "./components/Qrcode"
+import SplashScreen from './components/SplashScreen.js'
 // import Camera from './components/CameraComponent'
 import PlantDetails from './components/PlantDetails'
 import MyTrees from './components/MyTrees'
@@ -109,6 +107,12 @@ const CustomeDrawerComponent = (props) => (
 
 
 const AppNavigator = createStackNavigator({
+  SplashScreen: {
+    screen: SplashScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
   Home: {
     screen: HomeScreen,
   },
@@ -175,15 +179,9 @@ const MyDrawerNavigator = createDrawerNavigator({
 });
 
 
-// const switchnav = createSwitchNavigator({
-//   Auth : AuthenticationStack,
-//   App: MyDrawerNavigator,
-// })
-
 // const MyApp = createAppContainer(MyDrawerNavigator);
-const MyApp = createAppContainer(MyDrawerNavigator);
-
 console.disableYellowBox = true;
+const MyApp = createAppContainer(MyDrawerNavigator);
 
 export default class App extends React.Component {
   render() {

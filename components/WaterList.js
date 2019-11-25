@@ -11,36 +11,17 @@ export default class PlantDetails extends React.Component {
         // Search Code
         // Fetch This array from DB
         mytreelist : [
-        {
-          name: 'Go Man',
-          lastwatered : "Nov 22 2019",
-          spname : 'Mangifera indica',
-          img : 'https://imgaz1.staticbg.com/thumb/large/oaupload/banggood/images/A4/97/14c09c41-9c8d-49a1-a94e-65282729d808.jpeg.webp'
-        },
-        {
-          name: 'Dem Apples',
-          lastwatered : "Nov 22 2019",
-          spname : 'Malus domestica',
-          img : 'https://cdn.thetreecenter.com/c/uploads/pink-lady-apple-1.jpg'
-        },
-        {
-          name: 'Kelay ka poda',
-          lastwatered : "Nov 22 2019",
-          spname : 'Musa basjoo',
-          img : 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjrj4jzu_7lAhUKyqQKHbU6C-UQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.123rf.com%2Fphoto_99274110_banana-was-leaving-the-tip-of-a-banana-tree-typically-one-banana-a-banana-tree-leaves-only-once-.html&psig=AOvVaw2J5jHKcvb_ORsbbwU44oab&ust=1574534405194525'
-        },  
-        {
-          name: 'White Long Tree',
-          lastwatered : "Nov 22 2019",
-          spname : 'Eucalyptus globulus',
-          img : 'https://q7i2y6d5.stackpathcdn.com/wp-content/uploads/2009/06/eucalyptus-400x533.jpg'
-        },  
-        {
-          name: 'Cactoo',
-          lastwatered : "Nov 22 2019",
-          spname : 'Cactaceae',
-          img : 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjB1-ukvP7lAhWjsKQKHeuHCEkQjRx6BAgBEAQ&url=https%3A%2F%2Fthesucculentsource.com%2Fproducts%2Fsun-goddess-trichocereus-cactus&psig=AOvVaw1UaBKkWvQvufPXZlC-1AQt&ust=1574534512334411'
-        },    
+          {"Date_Planted":"22-03-19", "Image": "https://c-6rtwjumjzx7877x24nrlncx2ewfspjwx2ehtr.g00.ranker.com/g00/3_c-6bbb.wfspjw.htr_/c-6RTWJUMJZX77x24myyux78x3ax2fx2fnrlnc.wfspjw.htrx2fzx78jw_stij_nrlx2f05558x2f6555599785x2ftwnlnsfqx2fymj-gfsfsf-ywjj-nx78-sty-f-ywjj-kttix78-umtyt-z7x3fbx3d105x26vx3d05x26krx3duoulx26knyx3dhwtux26hwtux3dkfhjx78x26n65h.rfwpx3dnrflj_$/$/$/$/$/$", "Location":  {"latitude": 31.469847, "longitude": 74.409374,}, "Name": "Banana Boy", "Plant_ID": 389, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Musa Basjoo", "Specie_ID": 2, "Specie_Name": "Banana Tree", "Watered":"Nov 25 2019"},        
+          {"Date_Planted":"03-12-18", "Image": "https://cdn.pixabay.com/photo/2017/10/20/17/18/babul-2872022_960_720.jpg",       "Location":  {"latitude": 31.470734, "longitude": 74.408703,}, "Name": "Kiker K Darakhat", "Plant_ID": 3985, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Acacia Nilotica", "Specie_ID": 5, "Specie_Name": "Kiker", "Watered":"Nov 22 2019",},
+          {"Date_Planted":"20-02-10", "Image": "http://i.dawn.com/2012/08/6-gul-e-nishter-trees-qamar-mehdi-670.jpg",            "Location":  {"latitude": 31.471036, "longitude": 74.408698,}, "Name": "Sumbal Darakhat 2", "Plant_ID": 9357, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Bombax Ceiba", "Specie_ID": 6, "Specie_Name": "Sumbal", "Watered":"Nov 23 2019",},
+          {"Date_Planted":"12-02-15", "Image": "http://i.dawn.com/2012/08/7-sukh-chane-trees-qamar-mehdi-670.jpg",               "Location":  {"latitude": 31.471557, "longitude": 74.409615,}, "Name": "Sucky Sucky", "Plant_ID": 6046, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Pongamia Pinata", "Specie_ID": 7, "Specie_Name": "Sukh Chain", "Watered":"Nov 22 2019",},
+          {"Date_Planted":"05-07-13", "Image": "http://i.dawn.com/2012/08/4-sumbul-trees-qamar-mehdi-450.jpg",                   "Location":  {"latitude": 31.470734, "longitude": 74.408703,}, "Name": "Sumbal Tree", "Plant_ID": 7384, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Bombax Ceiba", "Specie_ID": 6, "Specie_Name": "Sumbal", "Watered":"Nov 24 2019",},
+          {"Date_Planted":"06-08-17", "Image": "https://d6p0gevo8s9lm.cloudfront.net/media/catalog/product/cache/1/image/353x353/9df78eab33525d08d6e5fb8d27136e95/m/u/musa-basjoo750x750.jpg",   "Location":  {"latitude": 31.469861, "longitude": 74.409519,}, "Name": "Banana Man", "Plant_ID": 5369, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Musa Basjoo", "Specie_ID": 2, "Specie_Name": "Banana Tree", "Watered":"Nov 21 2019",},
+          {"Date_Planted":"11-03-03", "Image": "https://live.staticflickr.com/2524/3954496959_e7fb57a43f_b.jpg",                                                                                 "Location":  {"latitude": 31.47024, "longitude": 74.409213,}, "Name": "Thorny Kiker", "Plant_ID": 292, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Acacia Nilotica", "Specie_ID": 5, "Specie_Name": "Kiker", "Watered":"Nov 20 2019"},
+          {"Date_Planted":"14-02-16", "Image": "https://media.npr.org/assets/img/2012/10/05/apple-tree-056fb57ed927bf3668ef04e5b9850e99363b87fe-s1100-c15.jpg",                                  "Location":  {"latitude": 31.469349, "longitude": 74.409841,}, "Name": "Asaaib", "Plant_ID": 797, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Malus Domestica", "Specie_ID": 1, "Specie_Name": "Apple Tree", "Watered":"Nov 18 2019",},
+          {"Date_Planted":"21-11-09", "Image": "https://i.pinimg.com/originals/5f/fc/c1/5ffcc15874a99035e053bbc5ff8148f5.jpg",   "Location":  {"latitude": 31.469139, "longitude": 74.409465,}, "Name": "Aam Khao", "Plant_ID": 452, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Mangifera indica", "Specie_ID": 4, "Specie_Name": "Mango", "Watered":"Nov 25 2019",},
+          {"Date_Planted":"19-01-07", "Image": "https://cdn.britannica.com/68/128168-004-BB84F2D2/Eucalyptus-tree.jpg",          "Location":  {"latitude": 31.470057, "longitude": 74.409336,}, "Name": "Angraiz", "Plant_ID": 9079, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Eucalytpus Globulus", "Specie_ID": 3, "Specie_Name": "Eucalytpus", "Watered":"Nov 17 2019",},
+          {"Date_Planted":"13-04-04", "Image": "https://images-na.ssl-images-amazon.com/images/I/71aGedkWLDL.jpg",               "Location":  {"latitude": 31.469486, "longitude": 74.409803,}, "Name": "Saib K Darakahat", "Plant_ID": 2816, "Planter_ID": 1, "Planter":"Hassan", "Specie_Bioname": "Malus Domestica", "Specie_ID": 1, "Specie_Name": "Apple Tree", "Watered":"Nov 25 2019",},
         ],
         st : ''
       }
@@ -49,114 +30,49 @@ export default class PlantDetails extends React.Component {
     static navigationOptions = ({navigation}) => ({
           headerLeft: (
             <TouchableWithoutFeedback onPress={() => navigation.goBack()} >
-              <Icon name="md-arrow-round-back"  style={{ marginTop: 10, marginLeft: 10}} size={32} color="#FFFFFF" />
+              <Icon name="md-arrow-round-back"  style={{ marginTop: 10, marginLeft: 10}} size={32} color="#eedede" />
             </TouchableWithoutFeedback>
           ),
           headerStyle: {
               backgroundColor: '#00695c',
           },
           title:"Water your trees",
-          headerTintColor:"white",
+          headerTintColor:"#eedede",
         });
       render() {
         const {navigate} = this.props.navigation;
         return (
           <View style={{ flex:1,width:"100%", height:"100%",marginTop:0, backgroundColor:"#eedede"}}>
-            <ScrollView persistentScrollbar = {true} style = {{flex: 1, width: '97%', height: '55%', alignSelf: 'center',marginTop: 15}}>
+            <ScrollView persistentScrollbar = {true} style = {{flex: 1, width: '97%', height: '55%', alignSelf: 'center',marginTop: 5}}>
               {
                 this.state.mytreelist.map((item,index) => {
                   return(
-                  <TouchableOpacity underlayColor="#439889" key = {index} onPress={(e) =>{this.props.navigation.navigate("Animation", {path: "MyTrees", name: item.name, spname: item.spname, lastwatered: item.lastwatered})}} 
-                                    style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 70, marginBottom: 15}}
-                  >
-                    <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1}}/>
-                    <View style={{flex:5, flexDirection:'column', paddingTop:5}}>
-                      <Text style={{color:"#eedede",height:"37%",fontSize:19,textAlignVertical: "center",marginLeft:15}}>{item.name}</Text>
-                      <Text style={{color:"#eedede",height:"30%",fontSize:15,textAlignVertical: "center",marginLeft:15}}>{item.spname}</Text>
+                    <View underlayColor="#439889" key = {index} style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',paddingTop:2, paddingBottom:2, paddingLeft:5, borderRadius: 2, marginBottom: 5}}>
+                    <Image source = {{uri:item.Image}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1, margin:3}}/>
+                    <View style={{flex:5, flexDirection:'column', margin:5}}>
+                      <Text style={{color:"#eedede",height:"37%",fontSize:19,textAlignVertical: "center",marginLeft:15}}>{item.Name}</Text>
+                      <Text style={{color:"#eedede",height:"30%",fontSize:15,textAlignVertical: "center",marginLeft:15}}>{item.Specie_Bioname}</Text>
                       <View style={{height:"12%", backgroundColor: "transparent"}}></View>
-                      <Text style={{color:"#eedede",height:"25%",fontSize:12,textAlignVertical: "center",marginLeft:15, }}>Last Watered: {item.lastwatered}</Text>
+                      <Text style={{color:"#eedede",height:"25%",fontSize:12,textAlignVertical: "center",marginLeft:15, }}>Last Watered: {item.Watered}</Text>
                     </View>
                     <View style={{flex: 3, justifyContent:"center",alignItems:"center"}}>
                           <TouchableHighlight onPress={
                             () => {
-                              this.state.mytreelist[index].lastwatered = new Date().toString().substring(4,15)
-                              console.log(this.state.mytreelist[index].lastwatered)
+                              this.state.mytreelist[index].Watered = new Date().toString().substring(4,15)
+                              console.log(this.state.mytreelist[index].Watered)
                               this.setState({st:''})
                             }
-                          } style={{width:70, height:40, backgroundColor:"#e1eff7", borderRadius:2}}>
+                          } style={{width:70, height:40, backgroundColor:"#e1eff7", borderRadius:2 , elevation:5}}>
                             <Text style={{color:"#00695c",fontSize:13,textAlign:"center",marginTop:10}}>Water Now</Text>
                           </TouchableHighlight>
                         </View>
-                  </TouchableOpacity>
+                  </View>
                   )
                 })
               }
-
-
-
-              {
-                this.state.mytreelist.map((item,index) => {
-                  return(
-                  <TouchableOpacity underlayColor="#439889" key = {index} onPress={(e) =>{this.props.navigation.navigate("Animation", {path: "MyTrees", name: item.name, spname: item.spname, lastwatered: item.lastwatered})}} 
-                                    style={{alignSelf: 'center',width: "100%", backgroundColor:"#00695c",flex:1, flexDirection:'row',opacity:75,paddingTop:5, paddingBottom:5, paddingLeft:5, borderRadius: 70, marginBottom: 15}}
-                  >
-                    <Image source = {{uri:item.img}} style={{borderColor:"#eedede",borderRadius:70 ,width: 70, height: 70, overflow: "hidden", borderWidth: 1}}/>
-                    <View style={{flex:5, flexDirection:'column', paddingTop:5}}>
-                      <Text style={{color:"#eedede",height:"37%",fontSize:19,textAlignVertical: "center",marginLeft:15}}>{item.name}</Text>
-                      <Text style={{color:"#eedede",height:"30%",fontSize:15,textAlignVertical: "center",marginLeft:15}}>{item.spname}</Text>
-                      <View style={{height:"12%", backgroundColor: "transparent"}}></View>
-                      <Text style={{color:"#eedede",height:"25%",fontSize:12,textAlignVertical: "center",marginLeft:15, }}>Last Watered: {item.lastwatered}</Text>
-                    </View>
-                    <View style={{flex: 3, justifyContent:"center",alignItems:"center"}}>
-                          <TouchableHighlight onPress={
-                            () => {
-                              this.state.mytreelist[index].lastwatered = new Date().toString().substring(4,15)
-                              console.log(this.state.mytreelist[index].lastwatered)
-                              this.setState({st:''})
-                            }
-                          } style={{width:70, height:40, backgroundColor:"#e1eff7", borderRadius:2}}>
-                            <Text style={{color:"#00695c",fontSize:13,textAlign:"center",marginTop:10}}>Water Now</Text>
-                          </TouchableHighlight>
-                        </View>
-                  </TouchableOpacity>
-                  )
-                })
-              }
-              
             </ScrollView>
           </View>
 
         );
       }
   }
-          // <ImageBackground source={require('../backdrop1jpg.jpg')} style={{width: '100%', height: '100%'}}>
-          //   <View style={{flexGrow:1,width:"100%", height:"100%",marginTop:0, backgroundColor:"transparent"}}>
-          //       <ScrollView>
-          //         {
-          //           this.state.mytreelist.map((item,index) => {
-          //             return(
-          //             <View style={{backgroundColor:"#b0bec5",borderColor:"#00695c",flex:1, flexDirection:'row',opacity:5,borderRadius:5,borderWidth:1,paddingTop:5, paddingBottom:5, paddingLeft:5}}>
-          //               <Image source = {{uri:item.img}} style={{borderColor:"#00695c" ,width: 80, height: 80, overflow: "hidden", borderWidth: 3}}/>
-          //               <View style={{flex:1, flexDirection:'column', paddingTop:5, width:100}}>
-          //               <Text style={{color:"#00695c",height:"40%",fontSize:16,textAlignVertical: "center",marginLeft:15}}>Nickname: {item.name}</Text>
-          //               <Text style={{color:"black",height:"30%",fontSize:12,textAlignVertical: "center",marginLeft:15}}>Last Watered: {item.lastwatered}</Text>
-          //               </View>
-          //               <View style={{justifyContent:"center",alignItems:"center"}}>
-          //                 <TouchableHighlight onPress={
-          //                   () => {
-          //                     this.state.mytreelist[index].lastwatered = new Date().toString().substring(4,15)
-          //                     console.log(this.state.mytreelist[index].lastwatered)
-          //                     this.setState({st:''})
-          //                   }
-          //                 } style={{width:100, height:40, backgroundColor:"#00695c",marginRight:10, borderRadius:2}}>
-          //                   <Text style={{color:"white",fontSize:14,textAlign:"center",marginTop:10}}>Water Now</Text>
-          //                 </TouchableHighlight>
-          //               </View>
-          //             </View>
-          //             )
-          //           })
-          //         }
-                
-          //       </ScrollView>
-          //   </View>
-          // </ImageBackground>

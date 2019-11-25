@@ -40,7 +40,8 @@ export default class PlantDetails extends React.Component {
                            nickname:  this.props.navigation.state.params.name,
                            spName: this.props.navigation.state.params.spname,
                            lastwatered: this.props.navigation.state.params.lastwatered,
-                           datePlanted: this.props.navigation.state.params.datePlanted
+                           datePlanted: this.props.navigation.state.params.datePlanted,
+                           plantedBy: this.props.navigation.state.params.plantedBy
                         })
         }
         else{
