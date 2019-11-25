@@ -17,7 +17,7 @@ import {
   FlatList,
   ScrollView
 } from 'react-native';
-
+import { RNCamera } from 'react-native-camera';
 import {NavigationActions} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Slideshow from 'react-native-image-slider-show';
@@ -42,37 +42,9 @@ const GetPlantDetails = [
 
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = ({navigation}) => {
-    const {params = {}} = navigation.state;
-    // console.log("Hello")
-    return {
-      headerLeft: (<TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
-                      <Icon name="md-menu" size={32} color="#eedede" style={{marginLeft: 20}}/>
-                  </TouchableOpacity>),
-      headerRight: (
-        <View style={{height:40,width: Math.round(Dimensions.get('window').width)*0.85,alignSelf:'center',flex:1,flexDirection:'row'}}>
-
-          <TextInput
-          inlineImageLeft='search_icon'
-          style={{color: '#eedede',fontSize:14, height: 40,width:Math.round(Dimensions.get('window').width)*0.7, borderColor: '#eedede', borderBottomWidth: 1, }}
-          underlineColorAndroid="transparent"
-          placeholder={" Search "}
-          onChangeText={(search) => params.handleUpdateSearch(search)}
-          />
-          <View style={{height:40,width:Math.round(Dimensions.get('window').width)*0.15,alignItems: 'center'}}>
-          <TouchableOpacity style={{justifyContent:'center',alignSelf:'center', alignItems:'center'}}onPress={() => navigation.toggleDrawer()}> 
-            <Icon name='md-camera' size={32} color="#eedede" style={{marginTop:5}}/>
-          </TouchableOpacity>
-          </View>
-      </View>),
-      headerStyle: {
-        backgroundColor: '#00695c',
-      }, 
-    }
-  };
   constructor(props) {
     super(props);
-
+    // this.cameraFunc = this.cameraFunc.bind(this);
     this.state = {
       // Search Code
       // Fetch This array from DB
@@ -182,7 +154,45 @@ export default class HomeScreen extends React.Component {
     clearInterval(this.state.interval);
   }
 
-  
+  // checkFunc = async () => {
+  //   console.log("Hello")
+  //   // return (null)
+  //   // return(
+  //   //   <RNCamera
+  //   //   ref={ref => {this.camera = ref;}}style={{flex: 1,width: '100%',}}>
+  //   //   </RNCamera>  
+  //   // )
+  // }
+
+  static navigationOptions = ({navigation}) => {
+    const {params = {}} = navigation.state;
+    // console.log("Hello")
+    return {
+      headerLeft: (<TouchableOpacity onPress={() => navigation.toggleDrawer()}> 
+                      <Icon name="md-menu" size={32} color="#eedede" style={{marginLeft: 20}}/>
+                  </TouchableOpacity>),
+      headerRight: (
+        <View style={{height:40,width: Math.round(Dimensions.get('window').width)*0.85,alignSelf:'center',flex:1,flexDirection:'row'}}>
+
+          <TextInput
+          inlineImageLeft='search_icon'
+          style={{color: '#eedede',fontSize:14, height: 40,width:Math.round(Dimensions.get('window').width)*0.7, borderColor: '#eedede', borderBottomWidth: 1, }}
+          underlineColorAndroid="transparent"
+          placeholder={" Search "}
+          onChangeText={(search) => params.handleUpdateSearch(search)}
+          />
+          <View style={{height:40,width:Math.round(Dimensions.get('window').width)*0.15,alignItems: 'center'}}>
+          <TouchableOpacity style={{justifyContent:'center',alignSelf:'center', alignItems:'center'}} onPress={() => {navigation.navigate('test')}} > 
+            <Icon name='md-camera' size={32} color="#eedede" style={{marginTop:5}}/>
+          </TouchableOpacity>
+          </View>
+      </View>),
+      headerStyle: {
+        backgroundColor: '#00695c',
+      }, 
+    }
+  };
+
   // End Search Code
 
   render() {

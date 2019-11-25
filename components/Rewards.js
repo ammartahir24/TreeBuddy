@@ -47,14 +47,23 @@ export default class Rewards extends React.Component {
   }
 
   static navigationOptions = ({navigation}) => ({
-    // title: this.state.latitude.toString() + " " + this.state.longitude.to_String(),
+    headerLeft: (
+      <TouchableWithoutFeedback onPress={() => navigation.goBack()} >
+        <Icon name="md-arrow-round-back"  style={{ marginTop: 10, marginLeft: 10}} size={32} color="#eedede" />
+      </TouchableWithoutFeedback>
+    ),
+    headerStyle: {
+        backgroundColor: '#00695c',
+    },
+    title:"Rewards",
+    headerTintColor:"#eedede",
   });
 
 
   render() {
     const {navigate} = this.props;
     return (
-      <ImageBackground style = {{backgroundColor: '#e7f0eb',height: '100%', width: '100%'}} style={{ opacity: 0.8, height: "100%", width:"100%"}}
+      <ImageBackground style = {{backgroundColor: '#e7f0eb',height: '100%', width: '100%'}}
             source = {require('../bgpink1.jpg')}
       >
           <Avatar.Image  theme={{colors: {primary: 'green'}}}  style = {{alignSelf: 'center',marginTop: 10}} size={150} source={require('../trophy_new.jpg')} />

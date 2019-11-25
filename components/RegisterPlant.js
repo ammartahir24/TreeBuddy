@@ -9,8 +9,9 @@ import {
   DatePickerAndroid,
   CameraRoll,
   TouchableWithoutFeedback,
+  TextComponent,
 } from 'react-native';
-import { TextInput, Button, Headline} from 'react-native-paper';
+import { TextInput, Button, Headline, Banner} from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import * as ImageManipulator from 'expo-image-manipulator';
 import Constants from 'expo-constants';
@@ -114,23 +115,27 @@ export default class RegisterPlant extends React.Component{
 	
 	//Do backend processing here.
 	<View>
-		<Headline style = {{color:"#00695c",fontWeight:"bold"}}>Please print this QR code and paste it on your tree </Headline>
-		<View style ={{height:"5%"}}/>
+		{/* <View style ={{height:"5%"}}/> */}
 		<View style = {{opacity: 0.8}} >
 			<ViewShot ref="viewShot" options={{ format: "jpg", quality: 0.9 }}>
+				{/* <Headline style = {{color:"black",fontWeight:"bold"}}>Please print this QR code and paste it on your tree </Headline>
+				<Text>Hello</Text> */}
 				<View style={{paddingLeft:"5%"}}/>
 				<View style={{paddingLeft:"25%"}}>
 				<QRCode
-				value="http://facebook.github.io/react-native/"
-				size={200}
-				// bgColor='black'
-				// fgColor='white'
+					value="http://facebook.github.io/react-native/"
+					size={200}
+					bgColor='black'
+					fgColor='white'
 				/>
 				</View>
 			</ViewShot>
 			<View style={{height: "10%"}}/>
 			<View>
-				<Button icon="content-save" mode="contained" onPress={()=>{this.qrcodesave();this.state.visibleModal=0;this.forceUpdate()}} >Save QR code to gallery</Button>
+				<Button icon="content-save" color = "#00695c" mode="contained" onPress={()=>{this.qrcodesave();this.state.visibleModal=0;this.forceUpdate()}} >Save QR code to gallery</Button>
+			</View>
+			<View style={{marginTop:25}}>
+				<Headline style = {{color:"black",fontWeight:"bold", textAlign:"center"}}>Please print this QR code and paste it on your tree </Headline>
 			</View>
 		</View>
 	</View>

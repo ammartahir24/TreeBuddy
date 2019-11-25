@@ -101,6 +101,7 @@ android {
     defaultConfig {
         applicationId "com.treebuddy"
         minSdkVersion rootProject.ext.minSdkVersion
+        missingDimensionStrategy 'react-native-camera', 'general'
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
@@ -143,11 +144,8 @@ dependencies {
     implementation project(':react-native-camera')
     implementation project(':react-native-view-shot')
     implementation project(':react-native-svg')
-<<<<<<< HEAD
     implementation project(':react-native-date-picker')
-=======
     implementation project(':react-native-image-picker')
->>>>>>> b79545b573c20e3159a265773ac9b2ff5806b035
     implementation project(':react-native-screens')
     implementation project(':react-native-reanimated')
     implementation project(':react-native-gesture-handler')
